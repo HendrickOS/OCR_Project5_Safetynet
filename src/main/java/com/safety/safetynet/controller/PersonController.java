@@ -21,7 +21,7 @@ public class PersonController {
 
 	@GetMapping
 	public String get() {
-		return "Hello World";
+		return "Hello World (Person Controller)";
 	}
 
 	@PostMapping
