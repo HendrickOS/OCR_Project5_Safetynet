@@ -1,5 +1,7 @@
 package com.safety.safetynet.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,23 @@ public class PersonService {
 	public void savePerson(Person person) {
 		if (person != null && person.getFirstName() != null && person.getLastName() != null) {
 			personRepository.addPerson(person);
+		}
+	}
+
+	public List<Person> list() {
+		return personRepository.list();
+	}
+
+	public void updatePerson(Person person) {
+		if (person != null && person.getFirstName() != null && person.getLastName() != null) {
+			personRepository.updatePerson(person);
+		}
+
+	}
+
+	public void deletePerson(Person person) {
+		if (person != null && person.getFirstName() != null && person.getLastName() != null) {
+			personRepository.deletePerson(person);
 		}
 	}
 

@@ -82,4 +82,12 @@ public class Person {
 		this.email = email;
 	}
 
+	public void update(Person person) {
+		this.address = person.address;
+		this.city = person.city;
+		this.zip = person.zip;
+		this.phone = person.phone;
+		this.email = person.email;
+	}
+
 }

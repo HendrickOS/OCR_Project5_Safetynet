@@ -36,14 +36,18 @@ class MedicalRecordTest {
 		assertEquals("myFirstName", medicalRecord.getFirstName());
 		assertEquals("myLastName", medicalRecord.getLastName());
 		assertEquals("myBirthdate", medicalRecord.getBirthdate());
-//		assertEquals(("Medication1:Measure1, Medication2:Measure2"), medicalRecord.getMedications());
-//		assertEquals(("Allergies1, Allergies2"), medicalRecord.getAllergies());
+		assertEquals(("Medication1:Measure1"), medicalRecord.getMedications().get(0));
+		assertEquals(("Medication2:Measure2"), medicalRecord.getMedications().get(1));
+		assertEquals(("Allergie1"), medicalRecord.getAllergies().get(0));
+		assertEquals(("Allergie2"), medicalRecord.getAllergies().get(1));
 
 		assertEquals("anotherFirstName", medicalRecord2.getFirstName());
 		assertEquals("anotherLastName", medicalRecord2.getLastName());
 		assertEquals("anotherBirthdate", medicalRecord2.getBirthdate());
-//		assertEquals(("Medication3:Measure3, Medication4:Measure4"), medicalRecord2.getMedications());
-//		assertEquals(("Allergies3, Allergies4"), medicalRecord2.getAllergies());
+		assertEquals(("Medication3:Measure3"), medicalRecord2.getMedications().get(0));
+		assertEquals(("Medication4:Measure4"), medicalRecord2.getMedications().get(1));
+		assertEquals(("Allergie3"), medicalRecord2.getAllergies().get(0));
+		assertEquals(("Allergie4"), medicalRecord2.getAllergies().get(1));
 
 	}
 

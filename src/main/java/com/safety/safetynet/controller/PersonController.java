@@ -2,8 +2,10 @@ package com.safety.safetynet.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -19,15 +21,26 @@ public class PersonController {
 	@Autowired
 	private PersonService personService;
 
-	@GetMapping
-	public String get() {
-		return "Hello World (Person Controller)";
+	@GetMapping("/list")
+	public Iterable<Person> list() {
+		return personService.list();
 	}
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.OK)
-	public void createSpanishGreeting(@RequestBody Person person) {
-		System.out.println("Adding new person");
+	public void addNewPerson(@RequestBody Person person) {
 		personService.savePerson(person);
+	}
+
+	@PutMapping
+	@ResponseStatus(HttpStatus.OK)
+	public void updatePerson(@RequestBody Person person) {
+		personService.updatePerson(person);
+	}
+
+	@DeleteMapping
+	@ResponseStatus(HttpStatus.OK)
+	public void deletePerson(@RequestBody Person person) {
+		personService.deletePerson(person);
 	}
 }
