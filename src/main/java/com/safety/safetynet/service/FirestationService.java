@@ -1,5 +1,7 @@
 package com.safety.safetynet.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +14,26 @@ public class FirestationService {
 	@Autowired
 	private FirestationRepository firestationRepository;
 
-	public void saveRepository(Firestation firestation) {
+	public void saveFirestation(Firestation firestation) {
 		if (firestation != null && firestation.getAddress() != null && firestation.getStation() != null) {
 			firestationRepository.addFirestation(firestation);
+		}
+	}
+
+	public List<Firestation> list() {
+		return firestationRepository.list();
+	}
+
+	public void updateFirestation(Firestation firestation) {
+		if (firestation != null && firestation.getAddress() != null && firestation.getStation() != null) {
+			firestationRepository.updateFirestation(firestation);
+		}
+
+	}
+
+	public void deleteFirestation(Firestation firestation) {
+		if (firestation != null && firestation.getAddress() != null && firestation.getStation() != null) {
+			firestationRepository.deleteFirestation(firestation);
 		}
 	}
 

@@ -1,5 +1,7 @@
 package com.safety.safetynet.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,22 @@ public class MedicalRecordService {
 	public void saveMedicalRecord(MedicalRecord medicalRecord) {
 		if (medicalRecord != null && medicalRecord.getFirstName() != null && medicalRecord.getLastName() != null) {
 			medicalRecordRepository.addMedicalRecord(medicalRecord);
+		}
+	}
+
+	public List<MedicalRecord> list() {
+		return medicalRecordRepository.list();
+	}
+
+	public void updateMedicalRecord(MedicalRecord medicalRecord) {
+		if (medicalRecord != null && medicalRecord.getFirstName() != null && medicalRecord.getLastName() != null) {
+			medicalRecordRepository.updateMedicalRecord(medicalRecord);
+		}
+	}
+
+	public void deleteMedicalRecord(MedicalRecord medicalRecord) {
+		if (medicalRecord != null && medicalRecord.getFirstName() != null && medicalRecord.getLastName() != null) {
+			medicalRecordRepository.deleteMedicalRecord(medicalRecord);
 		}
 	}
 

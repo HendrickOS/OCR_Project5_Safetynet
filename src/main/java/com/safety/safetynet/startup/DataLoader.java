@@ -23,6 +23,10 @@ public class DataLoader implements CommandLineRunner {
 		DataStore database = mapper.readValue(input, DataStore.class);
 		DataBase.getInstance().setStore(database);
 		System.out.println("Database chargée " + database.getPersons().size() + " personnes dans la base de données");
+		System.out
+				.println("Database chargée " + database.getFirestations().size() + " casernes dans la base de données");
+		System.out.println("Database chargée " + database.getMedicalrecords().size()
+				+ " rapports médicaux dans la base de données");
 	}
 
 }

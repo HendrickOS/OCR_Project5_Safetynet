@@ -31,4 +31,8 @@ public class Firestation {
 		this.station = station;
 	}
 
+	public void update(Firestation firestation) {
+		this.address = firestation.address;
+		this.station = firestation.station;
+	}
 }
