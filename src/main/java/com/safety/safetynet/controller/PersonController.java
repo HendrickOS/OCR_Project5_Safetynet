@@ -2,6 +2,7 @@ package com.safety.safetynet.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,8 +29,12 @@ public class PersonController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.OK)
-	public void addNewPerson(@RequestBody Person person) {
-		personService.savePerson(person);
+	public ResponseEntity addNewPerson(@RequestBody Person person) {
+		boolean result = personService.savePerson(person);
+		if (result) {
+			return ResponseEntity.ok(HttpStatus.OK);
+		}
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 	}
 
 	@PutMapping

@@ -14,10 +14,12 @@ public class PersonService {
 	@Autowired
 	private PersonRepository personRepository;
 
-	public void savePerson(Person person) {
+	public boolean savePerson(Person person) {
 		if (person != null && person.getFirstName() != null && person.getLastName() != null) {
 			personRepository.addPerson(person);
+			return true;
 		}
+		return false;
 	}
 
 	public List<Person> list() {
