@@ -65,8 +65,6 @@ public class MedicalRecord {
 	}
 
 	public void update(MedicalRecord medicalRecord) {
-		this.firstName = medicalRecord.firstName;
-		this.lastName = medicalRecord.lastName;
 		this.birthdate = medicalRecord.birthdate;
 		this.medications = medicalRecord.medications;
 		this.allergies = medicalRecord.allergies;

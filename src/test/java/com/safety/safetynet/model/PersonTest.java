@@ -11,6 +11,10 @@ class PersonTest {
 		Person person = new Person("myFirstName", "myLastName", "myAddress", "myCity", "myZip", "myPhoneNumber",
 				"myEmailAddress");
 		Person person2 = new Person();
+		Person person3 = new Person("myFirstName3", "myLastName3", "myAddress3", "myCity3", "myZip3", "myPhoneNumber3",
+				"myEmailAddress3");
+		Person personUpdate = new Person("myFirstName", "myLastName", "myAddressUpdate", "myCityUpdate", "myZipUpdate",
+				"myPhoneNumberUpdate", "myEmailAddressUpdate");
 
 		person2.setFirstName("anotherFirstName");
 		person2.setLastName("anotherLastName");
@@ -19,6 +23,7 @@ class PersonTest {
 		person2.setZip("anotherZip");
 		person2.setPhone("anotherPhoneNumber");
 		person2.setEmail("anotherEmailAddress");
+		person3.update(personUpdate);
 
 		assertEquals("myFirstName", person.getFirstName());
 		assertEquals("myLastName", person.getLastName());
@@ -34,6 +39,11 @@ class PersonTest {
 		assertEquals("anotherZip", person2.getZip());
 		assertEquals("anotherPhoneNumber", person2.getPhone());
 		assertEquals("anotherEmailAddress", person2.getEmail());
+		assertEquals("myAddressUpdate", person3.getAddress());
+		assertEquals("myCityUpdate", person3.getCity());
+		assertEquals("myZipUpdate", person3.getZip());
+		assertEquals("myPhoneNumberUpdate", person3.getPhone());
+		assertEquals("myEmailAddressUpdate", person3.getEmail());
 
 	}
 

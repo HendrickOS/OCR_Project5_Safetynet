@@ -23,15 +23,32 @@ class MedicalRecordTest {
 		anotherMedications.add("Medication4:Measure4");
 		anotherAllergies.add("Allergie3");
 		anotherAllergies.add("Allergie4");
+		List<String> myMedications3 = new ArrayList<String>();
+		List<String> myAllergies3 = new ArrayList<String>();
+		myMedications.add("Medication5:Measure5");
+		myMedications.add("Medication6:Measure6");
+		myAllergies.add("Allergie5");
+		myAllergies.add("Allergie6");
+		List<String> myMedicationsUpdate = new ArrayList<String>();
+		List<String> myAllergiesUpdate = new ArrayList<String>();
+		myMedications.add("MedicationUpdate1:MeasureUpdate1");
+		myMedications.add("MedicationUpdate2:MeasureUpdate2");
+		myAllergies.add("AllergieUpdate1");
+		myAllergies.add("AllergieUpdate2");
 		MedicalRecord medicalRecord = new MedicalRecord("myFirstName", "myLastName", "myBirthdate", myMedications,
 				myAllergies);
 		MedicalRecord medicalRecord2 = new MedicalRecord();
+		MedicalRecord medicalRecord3 = new MedicalRecord("myFirstName3", "myLastName3", "myBirthdate3", myMedications3,
+				myAllergies3);
+		MedicalRecord medicalRecordUpdate = new MedicalRecord("myFirstName", "myLastName", "myBirthdateUpdate",
+				myMedicationsUpdate, myAllergiesUpdate);
 
 		medicalRecord2.setFirstName("anotherFirstName");
 		medicalRecord2.setLastName("anotherLastName");
 		medicalRecord2.setBirthdate("anotherBirthdate");
 		medicalRecord2.setMedications(anotherMedications);
 		medicalRecord2.setAllergies(anotherAllergies);
+		medicalRecord3.update(medicalRecordUpdate);
 
 		assertEquals("myFirstName", medicalRecord.getFirstName());
 		assertEquals("myLastName", medicalRecord.getLastName());
@@ -48,6 +65,12 @@ class MedicalRecordTest {
 		assertEquals(("Medication4:Measure4"), medicalRecord2.getMedications().get(1));
 		assertEquals(("Allergie3"), medicalRecord2.getAllergies().get(0));
 		assertEquals(("Allergie4"), medicalRecord2.getAllergies().get(1));
+
+		assertEquals("myBirthdateUpdate", medicalRecord3.getBirthdate());
+//		assertEquals(("MedicationUpdate1:MeasureUpdate1"), medicalRecord3.getMedications().get(0));
+//		assertEquals(("MedicationUpdate2:MeasureUpdate2"), medicalRecord3.getMedications().get(1));
+//		assertEquals(("AllergieUpdate1"), medicalRecord3.getAllergies().get(0));
+//		assertEquals(("AllergieUpdate2"), medicalRecord3.getAllergies().get(1));
 
 	}
 
