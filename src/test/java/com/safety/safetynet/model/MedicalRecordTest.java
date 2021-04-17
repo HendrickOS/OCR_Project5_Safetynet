@@ -25,16 +25,16 @@ class MedicalRecordTest {
 		anotherAllergies.add("Allergie4");
 		List<String> myMedications3 = new ArrayList<String>();
 		List<String> myAllergies3 = new ArrayList<String>();
-		myMedications.add("Medication5:Measure5");
-		myMedications.add("Medication6:Measure6");
-		myAllergies.add("Allergie5");
-		myAllergies.add("Allergie6");
+		myMedications3.add("Medication5:Measure5");
+		myMedications3.add("Medication6:Measure6");
+		myAllergies3.add("Allergie5");
+		myAllergies3.add("Allergie6");
 		List<String> myMedicationsUpdate = new ArrayList<String>();
 		List<String> myAllergiesUpdate = new ArrayList<String>();
-		myMedications.add("MedicationUpdate1:MeasureUpdate1");
-		myMedications.add("MedicationUpdate2:MeasureUpdate2");
-		myAllergies.add("AllergieUpdate1");
-		myAllergies.add("AllergieUpdate2");
+		myMedicationsUpdate.add("MedicationUpdate1:MeasureUpdate1");
+		myMedicationsUpdate.add("MedicationUpdate2:MeasureUpdate2");
+		myAllergiesUpdate.add("AllergieUpdate1");
+		myAllergiesUpdate.add("AllergieUpdate2");
 		MedicalRecord medicalRecord = new MedicalRecord("myFirstName", "myLastName", "myBirthdate", myMedications,
 				myAllergies);
 		MedicalRecord medicalRecord2 = new MedicalRecord();
@@ -67,10 +67,10 @@ class MedicalRecordTest {
 		assertEquals(("Allergie4"), medicalRecord2.getAllergies().get(1));
 
 		assertEquals("myBirthdateUpdate", medicalRecord3.getBirthdate());
-//		assertEquals(("MedicationUpdate1:MeasureUpdate1"), medicalRecord3.getMedications().get(0));
-//		assertEquals(("MedicationUpdate2:MeasureUpdate2"), medicalRecord3.getMedications().get(1));
-//		assertEquals(("AllergieUpdate1"), medicalRecord3.getAllergies().get(0));
-//		assertEquals(("AllergieUpdate2"), medicalRecord3.getAllergies().get(1));
+		assertEquals(("MedicationUpdate1:MeasureUpdate1"), medicalRecord3.getMedications().get(0));
+		assertEquals(("MedicationUpdate2:MeasureUpdate2"), medicalRecord3.getMedications().get(1));
+		assertEquals(("AllergieUpdate1"), medicalRecord3.getAllergies().get(0));
+		assertEquals(("AllergieUpdate2"), medicalRecord3.getAllergies().get(1));
 
 	}
 
