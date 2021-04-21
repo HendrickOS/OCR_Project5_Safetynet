@@ -1,5 +1,6 @@
 package com.safety.safetynet.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -41,6 +42,17 @@ public class FirestationRepository extends BaseRepository implements IFirestatio
 
 	public List<Firestation> list() {
 		return DataBase.getInstance().getStore().getFirestations();
+	}
+
+	public List<String> getFirestationAddress(String station) {
+		List<Firestation> listFirestations = DataBase.getInstance().getStore().getFirestations();
+		List<String> addresses = new ArrayList<String>();
+		for (Firestation f : listFirestations) {
+			if (f.getStation().equalsIgnoreCase(station)) {
+				addresses.add(f.getAddress());
+			}
+		}
+		return addresses;
 	}
 
 }

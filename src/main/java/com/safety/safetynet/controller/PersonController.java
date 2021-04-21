@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.safety.safetynet.model.Person;
@@ -28,7 +27,6 @@ public class PersonController {
 	}
 
 	@PostMapping
-	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity addNewPerson(@RequestBody Person person) {
 		boolean result = personService.savePerson(person);
 		if (result) {
@@ -38,13 +36,11 @@ public class PersonController {
 	}
 
 	@PutMapping
-	@ResponseStatus(HttpStatus.OK)
 	public void updatePerson(@RequestBody Person person) {
 		personService.updatePerson(person);
 	}
 
 	@DeleteMapping
-	@ResponseStatus(HttpStatus.OK)
 	public void deletePerson(@RequestBody Person person) {
 		personService.deletePerson(person);
 	}

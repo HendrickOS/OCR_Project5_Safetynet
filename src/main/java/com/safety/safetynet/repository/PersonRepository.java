@@ -1,5 +1,6 @@
 package com.safety.safetynet.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -42,6 +43,17 @@ public class PersonRepository extends BaseRepository implements IPersonRepositor
 
 	public List<Person> list() {
 		return DataBase.getInstance().getStore().getPersons();
+	}
+
+	public List<Person> getPersonsFromAddresses(List<String> addresses) {
+		List<Person> persons = DataBase.getInstance().getStore().getPersons();
+		List<Person> result = new ArrayList<Person>();
+		for (Person p : persons) {
+			if (addresses.contains(p.getAddress())) {
+				result.add(Person.doPartialPerson(p));
+			}
+		}
+		return result;
 	}
 
 }

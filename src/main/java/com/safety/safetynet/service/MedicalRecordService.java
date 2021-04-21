@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.safety.safetynet.model.MedicalRecord;
+import com.safety.safetynet.model.Person;
 import com.safety.safetynet.repository.MedicalRecordRepository;
 
 @Service
@@ -34,6 +35,10 @@ public class MedicalRecordService {
 		if (medicalRecord != null && medicalRecord.getFirstName() != null && medicalRecord.getLastName() != null) {
 			medicalRecordRepository.deleteMedicalRecord(medicalRecord);
 		}
+	}
+
+	public int getPersonAge(Person person) {
+		return medicalRecordRepository.getPersonAge(person);
 	}
 
 }

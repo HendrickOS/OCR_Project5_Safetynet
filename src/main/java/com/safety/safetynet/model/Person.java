@@ -1,5 +1,9 @@
 package com.safety.safetynet.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(Include.NON_NULL)
 public class Person {
 
 	private String firstName;
@@ -9,6 +13,7 @@ public class Person {
 	private String zip;
 	private String phone;
 	private String email;
+	private int age;
 
 	public Person(String firstName, String lastName, String address, String city, String zip, String phone,
 			String email) {
@@ -88,6 +93,23 @@ public class Person {
 		this.zip = person.zip;
 		this.phone = person.phone;
 		this.email = person.email;
+	}
+
+	public static Person doPartialPerson(Person person) {
+		Person p = new Person();
+		p.setFirstName(person.getFirstName());
+		p.setLastName(person.getLastName());
+		p.setAddress(person.getAddress());
+		p.setPhone(person.getPhone());
+		return p;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
 	}
 
 }
