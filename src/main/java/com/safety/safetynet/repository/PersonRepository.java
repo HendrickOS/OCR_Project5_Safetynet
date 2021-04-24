@@ -45,12 +45,25 @@ public class PersonRepository extends BaseRepository implements IPersonRepositor
 		return DataBase.getInstance().getStore().getPersons();
 	}
 
+	/* Récupère la liste des personnes vivant aux adresses d'une liste d'adresse */
 	public List<Person> getPersonsFromAddresses(List<String> addresses) {
 		List<Person> persons = DataBase.getInstance().getStore().getPersons();
 		List<Person> result = new ArrayList<Person>();
 		for (Person p : persons) {
 			if (addresses.contains(p.getAddress())) {
-				result.add(Person.doPartialPerson(p));
+				result.add(Person.doFirestationPerson(p));
+			}
+		}
+		return result;
+	}
+
+	/* Récupère la liste des personnes vivant à une adresse */
+	public List<Person> getPersonsFromAddress(String address) {
+		List<Person> persons = DataBase.getInstance().getStore().getPersons();
+		List<Person> result = new ArrayList<Person>();
+		for (Person p : persons) {
+			if (address.contains(p.getAddress())) {
+				result.add(Person.doFirePerson(p));
 			}
 		}
 		return result;

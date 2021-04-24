@@ -46,17 +46,30 @@ public class FirestationController {
 		firestationService.deleteFirestation(firestation);
 	}
 
+	/*
+	 * Doit retourner une liste des personnes couvertes par la caserne de pompiers
+	 * correspondante. Donc, si le numéro de station = 1, elle doit renvoyer les
+	 * habitants couverts par la station numéro 1. La liste doit inclure les
+	 * informations spécifiques suivantes : prénom, nom, adresse, numéro de
+	 * téléphone. De plus, elle doit fournir un décompte du nombre d'adultes et du
+	 * nombre d'enfants (tout individu âgé de 18 ans ou moins) dans la zone
+	 * desservie
+	 */
 	@GetMapping
 	public FirestationPersons getPersonforFirestation(@RequestParam int stationNumber) {
 		FirestationPersons firestationPersons = new FirestationPersons();
 		String station = String.valueOf(stationNumber);
 		List<Person> persons = firestationService.getPersonsForFirestation(station);
+//		List<Person> p = new ArrayList<Person>();
 		for (Person person : persons) {
 			if (medicalRecordService.getPersonAge(person) > 18) {
 				firestationPersons.setNbAdults(firestationPersons.getNbAdults() + 1);
 			}
+//			person = Person.doFirestationPerson(person);
+//			p.add(Person.doFirestationPerson(person));
 		}
 		firestationPersons.setPersons(persons);
+//		firestationPersons.setPersons(Person.doFirestationPerson(persons));
 		firestationPersons.setNbChilds(persons.size() - firestationPersons.getNbAdults());
 		return firestationPersons;
 	}

@@ -14,6 +14,7 @@ public class Person {
 	private String phone;
 	private String email;
 	private int age;
+	private MedicalRecord medicalRecord = null;
 
 	public Person(String firstName, String lastName, String address, String city, String zip, String phone,
 			String email) {
@@ -95,11 +96,26 @@ public class Person {
 		this.email = person.email;
 	}
 
-	public static Person doPartialPerson(Person person) {
+	public static Person doFirestationPerson(Person person) {
 		Person p = new Person();
 		p.setFirstName(person.getFirstName());
 		p.setLastName(person.getLastName());
 		p.setAddress(person.getAddress());
+		p.setPhone(person.getPhone());
+		return p;
+	}
+
+	public static Person doChildPerson(Person person) {
+		Person p = new Person();
+		p.setFirstName(person.getFirstName());
+		p.setLastName(person.getLastName());
+		return p;
+	}
+
+	public static Person doFirePerson(Person person) {
+		Person p = new Person();
+		p.setFirstName(person.getFirstName());
+		p.setLastName(person.getLastName());
 		p.setPhone(person.getPhone());
 		return p;
 	}
@@ -110,6 +126,14 @@ public class Person {
 
 	public void setAge(int age) {
 		this.age = age;
+	}
+
+	public void setMedicalRecord(MedicalRecord medicationsAndAllergiesFromPerson) {
+		this.medicalRecord = medicationsAndAllergiesFromPerson;
+	}
+
+	public MedicalRecord getMedicalRecord() {
+		return medicalRecord;
 	}
 
 }

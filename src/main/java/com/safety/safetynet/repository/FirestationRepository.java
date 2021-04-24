@@ -44,7 +44,11 @@ public class FirestationRepository extends BaseRepository implements IFirestatio
 		return DataBase.getInstance().getStore().getFirestations();
 	}
 
-	public List<String> getFirestationAddress(String station) {
+	/*
+	 * Récupère la liste des adresses desservies par la Firestation selon son numéro
+	 * d'une station
+	 */
+	public List<String> getFirestationsAddresses(String station) {
 		List<Firestation> listFirestations = DataBase.getInstance().getStore().getFirestations();
 		List<String> addresses = new ArrayList<String>();
 		for (Firestation f : listFirestations) {
@@ -54,5 +58,18 @@ public class FirestationRepository extends BaseRepository implements IFirestatio
 		}
 		return addresses;
 	}
+
+	/* REQUEST FIRE */
+	/* Récupère le numéro de station d'une Firestation selon son adresse */
+//	public String getFirestationNumberFromAddress(String address) {
+//		List<Firestation> firestations = DataBase.getInstance().getStore().getFirestations();
+//		String stationNumber = null;
+//		for (Firestation f : firestations) {
+//			if (f.getAddress().equalsIgnoreCase(address)) {
+//				stationNumber = f.getStation();
+//			}
+//		}
+//		return stationNumber;
+//	}
 
 }

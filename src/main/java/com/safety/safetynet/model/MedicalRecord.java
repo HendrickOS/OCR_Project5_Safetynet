@@ -70,4 +70,13 @@ public class MedicalRecord {
 		this.allergies = medicalRecord.allergies;
 	}
 
+	public static MedicalRecord doPartialMedicalRecord(MedicalRecord medicalRecord) {
+		MedicalRecord mRecord = new MedicalRecord();
+		mRecord.setFirstName(medicalRecord.getFirstName());
+		mRecord.setLastName(medicalRecord.getLastName());
+		mRecord.setMedications(medicalRecord.getMedications());
+		mRecord.setAllergies(medicalRecord.getAllergies());
+		return mRecord;
+	}
+
 }

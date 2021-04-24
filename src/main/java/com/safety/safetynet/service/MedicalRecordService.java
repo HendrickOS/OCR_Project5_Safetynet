@@ -41,4 +41,14 @@ public class MedicalRecordService {
 		return medicalRecordRepository.getPersonAge(person);
 	}
 
+	public MedicalRecord getMedicationsAndAllergiesFromPerson(Person person) {
+		return medicalRecordRepository.getMedicationsAndAllergiesFromPerson(person);
+
+	}
+
+	public List<MedicalRecord> getMedicationsAndAllergiesFromPersons(List<Person> person) {
+		return medicalRecordRepository.getMedicationsAndAllergiesFromPersons(person);
+
+	}
+
 }

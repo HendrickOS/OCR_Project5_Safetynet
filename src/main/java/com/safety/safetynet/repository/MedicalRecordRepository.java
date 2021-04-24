@@ -2,6 +2,7 @@ package com.safety.safetynet.repository;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -46,6 +47,15 @@ public class MedicalRecordRepository extends BaseRepository implements IMedicalR
 		return DataBase.getInstance().getStore().getMedicalrecords();
 	}
 
+	/* Calcul d'âge */
+	private int computAge(String birthdate) {
+		String[] values = birthdate.split("/");
+		LocalDate date = LocalDate.parse(values[2] + "-" + values[0] + "-" + values[1]);
+		Period diff = Period.between(date, LocalDate.now());
+		return diff.getYears();
+	}
+
+	/* Recupère l'âge d'une personne */
 	public int getPersonAge(Person person) {
 		int age = -1;
 		List<MedicalRecord> medicalRecords = DataBase.getInstance().getStore().getMedicalrecords();
@@ -59,10 +69,38 @@ public class MedicalRecordRepository extends BaseRepository implements IMedicalR
 		return age;
 	}
 
-	private int computAge(String birthdate) {
-		String[] values = birthdate.split("/");
-		LocalDate date = LocalDate.parse(values[2] + "-" + values[0] + "-" + values[1]);
-		Period diff = Period.between(date, LocalDate.now());
-		return diff.getYears();
+	/* Récuperer le rapport médical d'une personne selon son nom et son prénom */
+	public MedicalRecord getMedicationsAndAllergiesFromPerson(Person person) {
+		List<MedicalRecord> medicalRecords = DataBase.getInstance().getStore().getMedicalrecords();
+		MedicalRecord medicalRecord = new MedicalRecord();
+		for (MedicalRecord mr : medicalRecords) {
+			if (person.getFirstName().equalsIgnoreCase(mr.getFirstName())
+					&& person.getLastName().equalsIgnoreCase(mr.getLastName())) {
+				medicalRecord = mr;
+				break;
+			}
+		}
+		MedicalRecord.doPartialMedicalRecord(medicalRecord);
+		return medicalRecord;
 	}
+
+	/*
+	 * Récupère une liste des rapport médicaux d'une liste personne selon leur nom
+	 * et prénom
+	 */
+	public List<MedicalRecord> getMedicationsAndAllergiesFromPersons(List<Person> persons) {
+		List<MedicalRecord> medicalRecords = DataBase.getInstance().getStore().getMedicalrecords();
+		List<MedicalRecord> medicalRecord = new ArrayList<MedicalRecord>();
+		for (Person p : persons) {
+			for (MedicalRecord mr : medicalRecords) {
+				if (p.getFirstName().equalsIgnoreCase(mr.getFirstName())
+						&& p.getLastName().equalsIgnoreCase(mr.getLastName())) {
+					medicalRecord.add(MedicalRecord.doPartialMedicalRecord(mr));
+					break;
+				}
+			}
+		}
+		return medicalRecord;
+	}
+
 }

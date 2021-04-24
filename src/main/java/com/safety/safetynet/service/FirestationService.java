@@ -42,7 +42,15 @@ public class FirestationService {
 	}
 
 	public List<Person> getPersonsForFirestation(String station) {
-		return personService.getPersonsFromAddresses(firestationRepository.getFirestationAddress(station));
+		return personService.getPersonsFromAddresses(firestationRepository.getFirestationsAddresses(station));
 	}
+
+	public List<String> getFirestationsAddresses(String station) {
+		return firestationRepository.getFirestationsAddresses(station);
+	}
+
+//	public String getFirestationNumberFromAddress(String address) {
+//		return firestationRepository.getFirestationNumberFromAddress(address);
+//	}
 
 }

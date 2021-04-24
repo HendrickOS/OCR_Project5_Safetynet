@@ -43,4 +43,8 @@ public class PersonService {
 		return personRepository.getPersonsFromAddresses(adresses);
 	}
 
+	public List<Person> getPersonsFromAddress(String adress) {
+		return personRepository.getPersonsFromAddress(adress);
+	}
+
 }
