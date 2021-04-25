@@ -1,33 +1,36 @@
 package com.safety.safetynet.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.safety.safetynet.model.MedicalRecord;
+import com.safety.safetynet.model.Person;
 
 public class FloodStation {
 
-	private String address;
-	private List<MedicalRecord> medicalRecord = new ArrayList<MedicalRecord>();
+	private Person person = new Person();
+	private MedicalRecord medicalRecord = new MedicalRecord();
 
 	public FloodStation() {
 		super();
 	}
 
-	public String getAddress() {
-		return address;
+	public Person getPerson() {
+		return person;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 
-	public List<MedicalRecord> getMedicalRecord() {
+	public MedicalRecord getMedicalRecord() {
 		return medicalRecord;
 	}
 
-	public void setMedicalRecord(List<MedicalRecord> medicalRecord) {
+	public void setMedicalRecord(MedicalRecord medicalRecord) {
 		this.medicalRecord = medicalRecord;
+	}
+
+	public void update(FloodStation floodStation) {
+		this.person = floodStation.person;
+		this.medicalRecord = floodStation.medicalRecord;
 	}
 
 }

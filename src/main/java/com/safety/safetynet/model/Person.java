@@ -129,6 +129,15 @@ public class Person {
 		return p;
 	}
 
+	public static Person doFloodPerson(Person person) {
+		Person p = new Person();
+		p.setLastName(person.getLastName());
+		p.setAddress(person.getAddress());
+		p.setPhone(person.getPhone());
+		p.setAge(person.getAge());
+		return p;
+	}
+
 	public int getAge() {
 		return age;
 	}

@@ -1,5 +1,6 @@
 package com.safety.safetynet.controller;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -90,6 +91,7 @@ public class RequestController {
 		fire.setStationNumber(stationNumber);
 		return fire;
 	}
+
 	/*
 	 * Doit retourner une liste de tous les foyers desservis par la caserne. Cette
 	 * liste doit regrouper les personnes par adresse. Elle doit aussi inclure le
@@ -97,18 +99,33 @@ public class RequestController {
 	 * antécédents médicaux (médicaments, posologie et allergies) à côté de chaque
 	 * nom
 	 */
-//	@GetMapping("/flood/stations")
-//	public List<FloodStation> getPersonsSortbyAddressFromStationNumbers(@RequestParam int stationNumber) {
-//		List<FloodStation> floodStations = new ArrayList<FloodStation>();
-//		String stationNb = String.valueOf(stationNumber);
-//		List<String> addresses = firestationService.getFirestationsAddresses(stationNb);
-//		List<Person> persons = personService.getPersonsFromAddresses(addresses);
-//		List<MedicalRecord> medRecords = medicalRecordService.getMedicationsAndAllergiesFromPerson(persons);
-//		for (String address : addresses) {
-//			floodStations.add(address, medicalRecordService.getMedicationsAndAllergiesFromPerson(person));
-//		}
-//		return floodStations;
-//	}
+	@GetMapping("/flood/stations")
+	public List<FloodStation> getPersonsSortbyAddressFromStationNumbers(@RequestParam int stations) {
+		List<FloodStation> floodStations = new ArrayList<FloodStation>();
+		List<String> addresses = new ArrayList<String>();
+		List<Person> persons = new ArrayList<Person>();
+		List<MedicalRecord> medicalRecords = new ArrayList<MedicalRecord>();
+		FloodStation floodStation = new FloodStation();
+		String stationNb = String.valueOf(stations);
+		addresses.addAll(firestationService.getFirestationsAddresses(stationNb));
+		persons.addAll(personService.getPersonsFromAddresses(addresses));
+		medicalRecords.addAll(medicalRecordService.getMedicationsAndAllergiesFromPersons(persons));
+		for (String address : addresses) {
+			for (Person person : persons) {
+				if (person.getAddress().equalsIgnoreCase(address)) {
+					for (MedicalRecord mr : medicalRecords) {
+						if (mr.getFirstName().equalsIgnoreCase(person.getFirstName())
+								&& mr.getLastName().equalsIgnoreCase(person.getLastName())) {
+							floodStation.setPerson(person);
+							floodStation.setMedicalRecord(mr);
+							floodStations.add(floodStation);
+						}
+					}
+				}
+			}
+		}
+		return floodStations;
+	}
 
 	/*
 	 * Doit retourner le nom, l'adresse, l'âge, l'adresse mail et les antécédents
