@@ -126,6 +126,7 @@ public class RequestController {
 		for (Person p : persons) {
 			if (p.getFirstName().equalsIgnoreCase(firstName) && p.getLastName().equalsIgnoreCase(lastName)) {
 				person = Person.doInfoPerson(p);
+				person.setAge(medicalRecordService.getPersonAge(p));
 			}
 		}
 		for (MedicalRecord mr : medicalRecords) {

@@ -125,6 +125,7 @@ public class Person {
 		p.setLastName(person.getLastName());
 		p.setAddress(person.getAddress());
 		p.setEmail(person.getEmail());
+		p.setAge(person.getAge());
 		return p;
 	}
 
