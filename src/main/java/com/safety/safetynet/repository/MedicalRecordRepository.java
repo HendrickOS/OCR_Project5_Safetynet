@@ -85,6 +85,23 @@ public class MedicalRecordRepository extends BaseRepository implements IMedicalR
 	}
 
 	/*
+	 * Récupère seulement les médicaments, posologies et allergies selon le nom et
+	 * prénom d'une personne
+	 */
+	public MedicalRecord getOnlyMedicationsAndAllergiesFromPerson(String firstName, String lastName) {
+		List<MedicalRecord> medicalRecords = DataBase.getInstance().getStore().getMedicalrecords();
+		MedicalRecord medicalRecord = new MedicalRecord();
+		for (MedicalRecord mr : medicalRecords) {
+			if (firstName.contains(mr.getFirstName()) && lastName.contains(mr.getLastName())) {
+				medicalRecord = mr;
+				break;
+			}
+		}
+		MedicalRecord.doPersonInfoMedicalRecord(medicalRecord);
+		return medicalRecord;
+	}
+
+	/*
 	 * Récupère une liste des rapport médicaux d'une liste personne selon leur nom
 	 * et prénom
 	 */
@@ -102,5 +119,4 @@ public class MedicalRecordRepository extends BaseRepository implements IMedicalR
 		}
 		return medicalRecord;
 	}
-
 }

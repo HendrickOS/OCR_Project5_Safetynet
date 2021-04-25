@@ -47,4 +47,8 @@ public class PersonService {
 		return personRepository.getPersonsFromAddress(adress);
 	}
 
+	public Person getPersonFromFirstNameAndLastName(String firstName, String lastName) {
+		return personRepository.getPersonFromFirstNameAndLastName(firstName, lastName);
+	}
+
 }

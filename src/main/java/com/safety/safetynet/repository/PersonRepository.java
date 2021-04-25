@@ -69,4 +69,16 @@ public class PersonRepository extends BaseRepository implements IPersonRepositor
 		return result;
 	}
 
+	/* Récupère les informations d'une personne selon son nom et son prénom */
+	public Person getPersonFromFirstNameAndLastName(String firstName, String lastName) {
+		List<Person> persons = DataBase.getInstance().getStore().getPersons();
+		Person person = new Person();
+		for (Person p : persons) {
+			if (p.getFirstName().equalsIgnoreCase(firstName) && p.getLastName().equalsIgnoreCase(lastName)) {
+				person = Person.doInfoPerson(p);
+			}
+		}
+		return person;
+	}
+
 }

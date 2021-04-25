@@ -48,7 +48,10 @@ public class MedicalRecordService {
 
 	public List<MedicalRecord> getMedicationsAndAllergiesFromPersons(List<Person> person) {
 		return medicalRecordRepository.getMedicationsAndAllergiesFromPersons(person);
+	}
 
+	public MedicalRecord getOnlyMedicationsAndAllergiesFromPerson(String firstName, String lastName) {
+		return medicalRecordRepository.getOnlyMedicationsAndAllergiesFromPerson(firstName, lastName);
 	}
 
 }

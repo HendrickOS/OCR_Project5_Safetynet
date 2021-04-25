@@ -120,6 +120,14 @@ public class Person {
 		return p;
 	}
 
+	public static Person doInfoPerson(Person person) {
+		Person p = new Person();
+		p.setLastName(person.getLastName());
+		p.setAddress(person.getAddress());
+		p.setEmail(person.getEmail());
+		return p;
+	}
+
 	public int getAge() {
 		return age;
 	}

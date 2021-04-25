@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.safety.safetynet.database.DataBase;
 import com.safety.safetynet.model.Firestation;
+import com.safety.safetynet.model.MedicalRecord;
 import com.safety.safetynet.model.Person;
 import com.safety.safetynet.service.FirestationService;
 import com.safety.safetynet.service.MedicalRecordService;
@@ -115,9 +116,26 @@ public class RequestController {
 	 * personnes portent le même nom, elles doivent toutes apparaître
 	 */
 	@GetMapping("/personInfo")
-	public List<String> getPersonAndMedicalRecordFromFirstNameAndLastName(@RequestParam String firstName,
+	public PersonInfo getPersonAndMedicalRecordFromFirstNameAndLastName(@RequestParam String firstName,
 			String lastName) {
-		return null;
+		List<Person> persons = DataBase.getInstance().getStore().getPersons();
+		List<MedicalRecord> medicalRecords = DataBase.getInstance().getStore().getMedicalrecords();
+		PersonInfo personInfo = new PersonInfo();
+		Person person = new Person();
+		MedicalRecord medicalRecord = new MedicalRecord();
+		for (Person p : persons) {
+			if (p.getFirstName().equalsIgnoreCase(firstName) && p.getLastName().equalsIgnoreCase(lastName)) {
+				person = Person.doInfoPerson(p);
+			}
+		}
+		for (MedicalRecord mr : medicalRecords) {
+			if (mr.getFirstName().equalsIgnoreCase(firstName) && mr.getLastName().equalsIgnoreCase(lastName)) {
+				medicalRecord = MedicalRecord.doPersonInfoMedicalRecord(mr);
+			}
+		}
+		personInfo.setPerson(person);
+		personInfo.setMedicalRecord(medicalRecord);
+		return personInfo;
 	}
 
 	/* Doit retourner les adresses mail de tous les habitants de la ville */

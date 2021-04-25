@@ -2,6 +2,10 @@ package com.safety.safetynet.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(Include.NON_NULL)
 public class MedicalRecord {
 
 	private String firstName;
@@ -74,6 +78,13 @@ public class MedicalRecord {
 		MedicalRecord mRecord = new MedicalRecord();
 		mRecord.setFirstName(medicalRecord.getFirstName());
 		mRecord.setLastName(medicalRecord.getLastName());
+		mRecord.setMedications(medicalRecord.getMedications());
+		mRecord.setAllergies(medicalRecord.getAllergies());
+		return mRecord;
+	}
+
+	public static MedicalRecord doPersonInfoMedicalRecord(MedicalRecord medicalRecord) {
+		MedicalRecord mRecord = new MedicalRecord();
 		mRecord.setMedications(medicalRecord.getMedications());
 		mRecord.setAllergies(medicalRecord.getAllergies());
 		return mRecord;
