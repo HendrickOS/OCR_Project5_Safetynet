@@ -9,17 +9,9 @@ public class ChildAlert {
 
 	private List<Person> childs = new ArrayList<Person>();
 	private List<Person> householdMembers = new ArrayList<Person>();
-	// private Person child = new Person();
-	// private HashMap<Person, List<Person>> family = new HashMap<Person,
-	// List<Person>>();
 
 	public ChildAlert() {
 		super();
-	}
-
-	public ChildAlert(List<Person> childs) {
-		super();
-		this.childs = childs;
 	}
 
 	public List<Person> getChilds() {

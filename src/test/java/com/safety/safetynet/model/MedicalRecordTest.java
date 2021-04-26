@@ -42,6 +42,10 @@ class MedicalRecordTest {
 				myAllergies3);
 		MedicalRecord medicalRecordUpdate = new MedicalRecord("myFirstName", "myLastName", "myBirthdateUpdate",
 				myMedicationsUpdate, myAllergiesUpdate);
+		MedicalRecord medicalRecordPartialMedicalRecord = new MedicalRecord("myFirstName", "myLastName", "myBirthdate",
+				myMedications, myAllergies);
+		MedicalRecord medicalRecordInfoMedicalRecord = new MedicalRecord("myFirstName", "myLastName", "myBirthdate",
+				myMedications, myAllergies);
 
 		medicalRecord2.setFirstName("anotherFirstName");
 		medicalRecord2.setLastName("anotherLastName");
@@ -49,6 +53,8 @@ class MedicalRecordTest {
 		medicalRecord2.setMedications(anotherMedications);
 		medicalRecord2.setAllergies(anotherAllergies);
 		medicalRecord3.update(medicalRecordUpdate);
+		MedicalRecord.doPartialMedicalRecord(medicalRecordPartialMedicalRecord);
+		MedicalRecord.doPersonInfoMedicalRecord(medicalRecordInfoMedicalRecord);
 
 		assertEquals("myFirstName", medicalRecord.getFirstName());
 		assertEquals("myLastName", medicalRecord.getLastName());

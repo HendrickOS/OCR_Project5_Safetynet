@@ -10,20 +10,32 @@ class PersonTest {
 	void testPerson() {
 		Person person = new Person("myFirstName", "myLastName", "myAddress", "myCity", "myZip", "myPhoneNumber",
 				"myEmailAddress");
-		Person person2 = new Person();
-		Person person3 = new Person("myFirstName3", "myLastName3", "myAddress3", "myCity3", "myZip3", "myPhoneNumber3",
-				"myEmailAddress3");
+		Person personEmpty = new Person();
+		Person personNeedAnUpdate = new Person("myFirstName3", "myLastName3", "myAddress3", "myCity3", "myZip3",
+				"myPhoneNumber3", "myEmailAddress3");
 		Person personUpdate = new Person("myFirstName", "myLastName", "myAddressUpdate", "myCityUpdate", "myZipUpdate",
 				"myPhoneNumberUpdate", "myEmailAddressUpdate");
+		Person personFirestationPerson = new Person("myFirstName", "myLastName", "myAddress", "myCity", "myZip",
+				"myPhoneNumber", "myEmailAddress");
+		Person personFirePerson = new Person("myFirstName", "myLastName", "myAddress", "myCity", "myZip",
+				"myPhoneNumber", "myEmailAddress");
+		Person personChildPerson = new Person("myFirstName", "myLastName", "myAddress", "myCity", "myZip",
+				"myPhoneNumber", "myEmailAddress");
+		Person personInfoPerson = new Person("myFirstName", "myLastName", "myAddress", "myCity", "myZip",
+				"myPhoneNumber", "myEmailAddress");
 
-		person2.setFirstName("anotherFirstName");
-		person2.setLastName("anotherLastName");
-		person2.setAddress("anotherAddress");
-		person2.setCity("anotherCity");
-		person2.setZip("anotherZip");
-		person2.setPhone("anotherPhoneNumber");
-		person2.setEmail("anotherEmailAddress");
-		person3.update(personUpdate);
+		personEmpty.setFirstName("anotherFirstName");
+		personEmpty.setLastName("anotherLastName");
+		personEmpty.setAddress("anotherAddress");
+		personEmpty.setCity("anotherCity");
+		personEmpty.setZip("anotherZip");
+		personEmpty.setPhone("anotherPhoneNumber");
+		personEmpty.setEmail("anotherEmailAddress");
+		personNeedAnUpdate.update(personUpdate);
+		Person.doFirestationPerson(personFirestationPerson);
+		Person.doFirePerson(personFirePerson);
+		Person.doChildPerson(personChildPerson);
+		Person.doInfoPerson(personInfoPerson);
 
 		assertEquals("myFirstName", person.getFirstName());
 		assertEquals("myLastName", person.getLastName());
@@ -32,18 +44,18 @@ class PersonTest {
 		assertEquals("myZip", person.getZip());
 		assertEquals("myPhoneNumber", person.getPhone());
 		assertEquals("myEmailAddress", person.getEmail());
-		assertEquals("anotherFirstName", person2.getFirstName());
-		assertEquals("anotherLastName", person2.getLastName());
-		assertEquals("anotherAddress", person2.getAddress());
-		assertEquals("anotherCity", person2.getCity());
-		assertEquals("anotherZip", person2.getZip());
-		assertEquals("anotherPhoneNumber", person2.getPhone());
-		assertEquals("anotherEmailAddress", person2.getEmail());
-		assertEquals("myAddressUpdate", person3.getAddress());
-		assertEquals("myCityUpdate", person3.getCity());
-		assertEquals("myZipUpdate", person3.getZip());
-		assertEquals("myPhoneNumberUpdate", person3.getPhone());
-		assertEquals("myEmailAddressUpdate", person3.getEmail());
+		assertEquals("anotherFirstName", personEmpty.getFirstName());
+		assertEquals("anotherLastName", personEmpty.getLastName());
+		assertEquals("anotherAddress", personEmpty.getAddress());
+		assertEquals("anotherCity", personEmpty.getCity());
+		assertEquals("anotherZip", personEmpty.getZip());
+		assertEquals("anotherPhoneNumber", personEmpty.getPhone());
+		assertEquals("anotherEmailAddress", personEmpty.getEmail());
+		assertEquals("myAddressUpdate", personNeedAnUpdate.getAddress());
+		assertEquals("myCityUpdate", personNeedAnUpdate.getCity());
+		assertEquals("myZipUpdate", personNeedAnUpdate.getZip());
+		assertEquals("myPhoneNumberUpdate", personNeedAnUpdate.getPhone());
+		assertEquals("myEmailAddressUpdate", personNeedAnUpdate.getEmail());
 
 	}
 

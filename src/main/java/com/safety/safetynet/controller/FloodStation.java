@@ -28,9 +28,9 @@ public class FloodStation {
 		this.medicalRecord = medicalRecord;
 	}
 
-	public void update(FloodStation floodStation) {
-		this.person = floodStation.person;
-		this.medicalRecord = floodStation.medicalRecord;
+	public void update(Person person, MedicalRecord medicalRecord) {
+		this.person = person;
+		this.medicalRecord = medicalRecord;
 	}
 
 }

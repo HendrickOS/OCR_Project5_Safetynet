@@ -116,9 +116,8 @@ public class RequestController {
 					for (MedicalRecord mr : medicalRecords) {
 						if (mr.getFirstName().equalsIgnoreCase(person.getFirstName())
 								&& mr.getLastName().equalsIgnoreCase(person.getLastName())) {
-							floodStation.setPerson(person);
-							floodStation.setMedicalRecord(mr);
-							floodStations.add(floodStation);
+//							floodStation.update(person, mr);
+//							floodStations.add(floodStation);
 						}
 					}
 				}
