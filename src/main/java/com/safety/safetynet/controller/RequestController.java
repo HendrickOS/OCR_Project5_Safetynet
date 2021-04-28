@@ -1,6 +1,8 @@
 package com.safety.safetynet.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -100,29 +102,44 @@ public class RequestController {
 	 * nom
 	 */
 	@GetMapping("/flood/stations")
-	public List<FloodStation> getPersonsSortbyAddressFromStationNumbers(@RequestParam int stations) {
+	public List<FloodStation> getPersonsSortbyAddressFromStationNumbers(@RequestParam List<Integer> stations) {
 		List<FloodStation> floodStations = new ArrayList<FloodStation>();
-		List<String> addresses = new ArrayList<String>();
+		Set<String> addresses = new HashSet<String>();
 		List<Person> persons = new ArrayList<Person>();
 		List<MedicalRecord> medicalRecords = new ArrayList<MedicalRecord>();
-		FloodStation floodStation = new FloodStation();
-		String stationNb = String.valueOf(stations);
-		addresses.addAll(firestationService.getFirestationsAddresses(stationNb));
-		persons.addAll(personService.getPersonsFromAddresses(addresses));
-		medicalRecords.addAll(medicalRecordService.getMedicationsAndAllergiesFromPersons(persons));
-		for (String address : addresses) {
-			for (Person person : persons) {
-				if (person.getAddress().equalsIgnoreCase(address)) {
-					for (MedicalRecord mr : medicalRecords) {
-						if (mr.getFirstName().equalsIgnoreCase(person.getFirstName())
-								&& mr.getLastName().equalsIgnoreCase(person.getLastName())) {
+
+		for (int i = 0; i < stations.size(); i++) {
+			addresses.addAll(firestationService.getFirestationsAddresses(String.valueOf(stations.get(i))));
+		}
+		persons.addAll(personService.getPersonsFromAddresses(new ArrayList<String>(addresses)));
+		for (Person person : persons) {
+			MedicalRecord mr = medicalRecordService.getMedicationsAndAllergiesFromPerson(person);
+			FloodStation floodStation = new FloodStation();
+			floodStation.setPerson(person);
+			floodStation.setMedicalRecord(mr);
+			floodStations.add(floodStation);
+		}
+//		medicalRecords.addAll(medicalRecordService.getMedicationsAndAllergiesFromPersons(persons));
+
+		// for (String address : addresses) {
+//			for (Person person : persons) {
+//				if (person.getAddress().equalsIgnoreCase(address)) {
+//					for (MedicalRecord mr : medicalRecords) {
+//						if (mr.getFirstName().equalsIgnoreCase(person.getFirstName())
+//								&& mr.getLastName().equalsIgnoreCase(person.getLastName())) {
 //							floodStation.update(person, mr);
 //							floodStations.add(floodStation);
-						}
-					}
-				}
+//						}
+//					}
+//				}
+//			}
+//		}
+		Collections.sort(floodStations, new Comparator<FloodStation>() {
+			@Override
+			public int compare(FloodStation p1, FloodStation p2) {
+				return p1.getPerson().getAddress().compareTo(p2.getPerson().getAddress());
 			}
-		}
+		});
 		return floodStations;
 	}
 
