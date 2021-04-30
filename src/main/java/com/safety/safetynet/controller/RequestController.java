@@ -40,7 +40,7 @@ public class RequestController {
 	@GetMapping("/childAlert")
 	public ChildAlert getFamilyFromAdress(@RequestParam String address) {
 		ChildAlert childAlert = new ChildAlert();
-		List<Person> persons = personService.getPersonsFromAddress(address);
+		List<Person> persons = personService.getPersonsFromAddressChildAlert(address);
 		for (Person person : persons) {
 			if (medicalRecordService.getPersonAge(person) < 18) {
 				childAlert.getChilds().add(person);
@@ -51,7 +51,6 @@ public class RequestController {
 		childAlert.setHouseholdMembers(persons);
 		if (childAlert.getChilds().isEmpty()) {
 			childAlert.setChilds(null);
-//			childAlert.setHouseholdMembers(null);
 		}
 		return childAlert;
 	}
@@ -79,7 +78,7 @@ public class RequestController {
 		Fire fire = new Fire();
 		List<Firestation> firestations = DataBase.getInstance().getStore().getFirestations();
 		String stationNumber = null;
-		List<Person> persons = personService.getPersonsFromAddress(address);
+		List<Person> persons = personService.getPersonsFromAddressFirePerson(address);
 		for (Firestation f : firestations) {
 			if (f.getAddress().equalsIgnoreCase(address)) {
 				stationNumber = f.getStation();
@@ -106,8 +105,6 @@ public class RequestController {
 		List<FloodStation> floodStations = new ArrayList<FloodStation>();
 		Set<String> addresses = new HashSet<String>();
 		List<Person> persons = new ArrayList<Person>();
-		List<MedicalRecord> medicalRecords = new ArrayList<MedicalRecord>();
-
 		for (int i = 0; i < stations.size(); i++) {
 			addresses.addAll(firestationService.getFirestationsAddresses(String.valueOf(stations.get(i))));
 		}
@@ -115,25 +112,11 @@ public class RequestController {
 		for (Person person : persons) {
 			MedicalRecord mr = medicalRecordService.getMedicationsAndAllergiesFromPerson(person);
 			FloodStation floodStation = new FloodStation();
+			person.setAge(medicalRecordService.getPersonAge(person));
 			floodStation.setPerson(person);
 			floodStation.setMedicalRecord(mr);
 			floodStations.add(floodStation);
 		}
-//		medicalRecords.addAll(medicalRecordService.getMedicationsAndAllergiesFromPersons(persons));
-
-		// for (String address : addresses) {
-//			for (Person person : persons) {
-//				if (person.getAddress().equalsIgnoreCase(address)) {
-//					for (MedicalRecord mr : medicalRecords) {
-//						if (mr.getFirstName().equalsIgnoreCase(person.getFirstName())
-//								&& mr.getLastName().equalsIgnoreCase(person.getLastName())) {
-//							floodStation.update(person, mr);
-//							floodStations.add(floodStation);
-//						}
-//					}
-//				}
-//			}
-//		}
 		Collections.sort(floodStations, new Comparator<FloodStation>() {
 			@Override
 			public int compare(FloodStation p1, FloodStation p2) {

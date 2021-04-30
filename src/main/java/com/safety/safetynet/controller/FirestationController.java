@@ -60,16 +60,12 @@ public class FirestationController {
 		FirestationPersons firestationPersons = new FirestationPersons();
 		String station = String.valueOf(stationNumber);
 		List<Person> persons = firestationService.getPersonsForFirestation(station);
-//		List<Person> p = new ArrayList<Person>();
 		for (Person person : persons) {
 			if (medicalRecordService.getPersonAge(person) > 18) {
 				firestationPersons.setNbAdults(firestationPersons.getNbAdults() + 1);
 			}
-//			person = Person.doFirestationPerson(person);
-//			p.add(Person.doFirestationPerson(person));
 		}
 		firestationPersons.setPersons(persons);
-//		firestationPersons.setPersons(Person.doFirestationPerson(persons));
 		firestationPersons.setNbChilds(persons.size() - firestationPersons.getNbAdults());
 		return firestationPersons;
 	}

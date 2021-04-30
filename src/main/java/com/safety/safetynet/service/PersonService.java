@@ -43,8 +43,16 @@ public class PersonService {
 		return personRepository.getPersonsFromAddresses(adresses);
 	}
 
-	public List<Person> getPersonsFromAddress(String adress) {
-		return personRepository.getPersonsFromAddress(adress);
+	public List<Person> getPersonsFromAddressFirePerson(String adress) {
+		return personRepository.getPersonsFromAddressFirePerson(adress);
+	}
+
+	public List<Person> getPersonsFromAddressFirestationPerson(String adress) {
+		return personRepository.getPersonsFromAddressFirestationPerson(adress);
+	}
+
+	public List<Person> getPersonsFromAddressChildAlert(String adress) {
+		return personRepository.getPersonsFromAddressChildAlert(adress);
 	}
 
 	public Person getPersonFromFirstNameAndLastName(String firstName, String lastName) {

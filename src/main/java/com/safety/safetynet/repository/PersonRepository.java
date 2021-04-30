@@ -58,12 +58,34 @@ public class PersonRepository extends BaseRepository implements IPersonRepositor
 	}
 
 	/* Récupère la liste des personnes vivant à une adresse */
-	public List<Person> getPersonsFromAddress(String address) {
+	public List<Person> getPersonsFromAddressFirePerson(String address) {
 		List<Person> persons = DataBase.getInstance().getStore().getPersons();
 		List<Person> result = new ArrayList<Person>();
 		for (Person p : persons) {
 			if (address.contains(p.getAddress())) {
 				result.add(Person.doFirePerson(p));
+			}
+		}
+		return result;
+	}
+
+	public List<Person> getPersonsFromAddressFirestationPerson(String address) {
+		List<Person> persons = DataBase.getInstance().getStore().getPersons();
+		List<Person> result = new ArrayList<Person>();
+		for (Person p : persons) {
+			if (address.contains(p.getAddress())) {
+				result.add(Person.doFirestationPerson(p));
+			}
+		}
+		return result;
+	}
+
+	public List<Person> getPersonsFromAddressChildAlert(String address) {
+		List<Person> persons = DataBase.getInstance().getStore().getPersons();
+		List<Person> result = new ArrayList<Person>();
+		for (Person p : persons) {
+			if (address.contains(p.getAddress())) {
+				result.add(Person.doChildPerson(p));
 			}
 		}
 		return result;
