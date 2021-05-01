@@ -36,6 +36,9 @@ public class PersonControllerTest {
 			mvc.perform(get("/person").contentType("application/json")).andExpect(status().isOk());
 			// .andExpect(content().json({"firstName":"Thomas
 			// Gasmyr","lastName":"Mougang","city":"Yaounde"}));
+
+//			 .andExpect(content().json({"firstName":"John","lastName":"Boyd","address":"1509 Culver St","city":"Culver",
+//			 "zip":"97451","phone":"841-874-6512","email":"jaboyd@email.com"}));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

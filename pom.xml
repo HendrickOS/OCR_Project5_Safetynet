@@ -14,10 +14,13 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>safetynet</name>
 	<description>Envoie d&apos;informations aux systèmes de services d&apos;urgence</description>
+	
 	<properties>
 		<java.version>11</java.version>
 	</properties>
+	
 	<dependencies>
+	
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
@@ -34,11 +37,20 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- Mockito extention -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-junit-jupiter</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
