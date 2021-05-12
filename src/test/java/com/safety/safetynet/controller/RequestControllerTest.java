@@ -42,6 +42,7 @@ class RequestControllerTest {
 
 	@Test
 	void childAlertRequestTest() {
+		ChildAlert childAlert = new ChildAlert();
 		String address = "1509 Culver St";
 		Person john = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512",
 				"jaboyd@email.com");
@@ -59,7 +60,16 @@ class RequestControllerTest {
 		persons.add(tenley);
 		persons.add(roger);
 		persons.add(felicia);
+		List<Person> childs = new ArrayList<Person>();
+		childs.add(tenley);
+		childs.add(roger);
+		List<Person> householdMembers = new ArrayList<Person>();
+		householdMembers.add(john);
+		householdMembers.add(jacob);
+		householdMembers.add(felicia);
 
+		childAlert.setChilds(childs);
+		childAlert.setHouseholdMembers(householdMembers);
 		Mockito.when(personService.getPersonsFromAddressChildAlert(address)).thenReturn(persons);
 
 		try {

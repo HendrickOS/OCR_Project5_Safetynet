@@ -1,37 +1,45 @@
-//package com.safety.repository;
-//
-//import static org.junit.jupiter.api.Assertions.assertEquals;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//import org.junit.jupiter.api.Test;
-//
-//import com.safety.safetynet.model.MedicalRecord;
-//import com.safety.safetynet.model.Person;
-//import com.safety.safetynet.service.MedicalRecordService;
-//
-//class MedicalRecordRepositoryTest {
-//
-//	MedicalRecordService medicalRecordService;
-//
+package com.safety.repository;
+
+import com.safety.safetynet.service.MedicalRecordService;
+
+class MedicalRecordRepositoryTest {
+
+	MedicalRecordService medicalRecordService;
+
 //	@Test
 //	void getPersonAgeTest() {
-//		Person person = new Person("myFirstName", "myLastName", "myAddress", "myCity", "myZip", "myPhoneNumber",
-//				"myEmailAddress");
-//		Person p = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "jaboyd@email.com");
-//		List<String> myMedications = new ArrayList<String>();
-//		List<String> myAllergies = new ArrayList<String>();
-//		myMedications.add("Medication1:Measure1");
-//		myMedications.add("Medication2:Measure2");
-//		myAllergies.add("Allergie1");
-//		myAllergies.add("Allergie2");
-//		MedicalRecord medicalRecord = new MedicalRecord("myFirstName", "myLastName", "03/06/1984", myMedications,
-//				myAllergies);
 //		int age;
+//		Person john = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512",
+//				"jaboyd@email.com");
+//		List<String> medications = new ArrayList<String>();
+//		medications.add("aznol:350mg");
+//		medications.add("hydrapermazol:100mg");
+//		List<String> allergies = new ArrayList<String>();
+//		allergies.add("nillacilan");
+//		MedicalRecord mr = new MedicalRecord("John", "Boyd", "03/06/1984", medications, allergies);
 //
-//		age = medicalRecordService.getPersonAge(p);
+//		Mockito.when(medicalRecordService.getPersonAge(john)).thenReturn(37);
+////		age = medicalRecordService.getPersonAge(john);
 //
 //		assertEquals(37, age);
 //	}
-//}
+
+//	@Test
+//	void getMedicationsAndAllergiesFromPersonTest() {
+//		MedicalRecord medicalRecord = new MedicalRecord();
+//		Person john = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512",
+//				"jaboyd@email.com");
+//		List<String> medications = new ArrayList<String>();
+//		medications.add("aznol:350mg");
+//		medications.add("hydrapermazol:100mg");
+//		List<String> allergies = new ArrayList<String>();
+//		allergies.add("nillacilan");
+//		MedicalRecord medicalRecord = new MedicalRecord("John", "Boyd", "03/06/1984", medications, allergies);
+//		
+//		medicalRecord = medicalRecordService.getMedicationsAndAllergiesFromPerson(john);
+//		
+//		assertEquals(("John", "Boyd", "03/06/1984", ["aznol:350mg", "hydrapermazol:100mg"], ["nillacilan"]), medicalRecord);
+//		
+//	}
+
+}
