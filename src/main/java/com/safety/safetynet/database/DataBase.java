@@ -1,5 +1,8 @@
 package com.safety.safetynet.database;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class DataBase {
 
 	private static DataBase instance;

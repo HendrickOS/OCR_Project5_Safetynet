@@ -76,7 +76,7 @@ class RequestControllerTest {
 			mvc.perform(get("/childAlert?address=1509 Culver St").contentType(MediaType.APPLICATION_JSON)
 					.characterEncoding("utf-8")).andDo(MockMvcResultHandlers.print()).andExpect(status().isOk())
 					.andReturn().getResponse().getStatus();
-//					.andExpect(content().json(responseContent));
+//					.andExpect(content().json(new Gson().toJson(responseContent)));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -202,7 +202,7 @@ class RequestControllerTest {
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
-//
+
 //	}
 
 //	@Test
