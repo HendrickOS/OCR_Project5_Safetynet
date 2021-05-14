@@ -145,7 +145,7 @@ class PersonRepositoryTest {
 			personsExpected.add(Person.doChildPerson(p));
 		}
 
-		result = personRepository.getPersonsFromAddressFirestationPerson(address);
+		result = personRepository.getPersonsFromAddressChildAlert(address);
 
 		assertEquals(personsExpected.size(), result.size());
 		assertEquals(personsExpected.get(0).getFirstName(), result.get(0).getFirstName());
