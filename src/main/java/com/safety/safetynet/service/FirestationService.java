@@ -48,9 +48,4 @@ public class FirestationService {
 	public List<String> getFirestationsAddresses(String station) {
 		return firestationRepository.getFirestationsAddresses(station);
 	}
-
-//	public String getFirestationNumberFromAddress(String address) {
-//		return firestationRepository.getFirestationNumberFromAddress(address);
-//	}
-
 }
