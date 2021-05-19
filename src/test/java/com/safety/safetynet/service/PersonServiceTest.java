@@ -176,4 +176,34 @@ class PersonServiceTest {
 		assertEquals(john.getAddress(), result.getAddress());
 	}
 
+	@Test
+	void updatePersonTest() {
+		Person personUpdate = new Person("fistNameUpdate", "lastNameUpdate", "addresseUpdate", "cityUpdate",
+				"zipUpdate", "phoneUpdate", "jaboyd@emailUpdate");
+
+		personService.updatePerson(personUpdate);
+
+		Mockito.verify(personRepository).updatePerson(personUpdate);
+	}
+
+	@Test
+	void savePersonTest() {
+		Person personToSave = new Person("fistNameUpdate", "lastNameUpdate", "addresseUpdate", "cityUpdate",
+				"zipUpdate", "phoneUpdate", "jaboyd@emailUpdate");
+
+		personService.savePerson(personToSave);
+
+		Mockito.verify(personRepository).addPerson(personToSave);
+	}
+
+	@Test
+	void deletePersonTest() {
+		Person personToDelete = new Person("fistNameUpdate", "lastNameUpdate", "addresseUpdate", "cityUpdate",
+				"zipUpdate", "phoneUpdate", "jaboyd@emailUpdate");
+
+		personService.deletePerson(personToDelete);
+
+		Mockito.verify(personRepository).deletePerson(personToDelete);
+	}
+
 }

@@ -167,4 +167,18 @@ class PersonRepositoryTest {
 		assertEquals(john.getAddress(), result.getAddress());
 
 	}
+
+	@Test
+	void updatePersonTest() {
+		Person person = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512",
+				"jaboyd@email.com");
+		Person johnUpdate = new Person();
+
+		personRepository.updatePerson(person);
+		johnUpdate.update(person);
+
+		assertEquals(person.getMedicalRecord(), johnUpdate.getMedicalRecord());
+		assertEquals(person.getEmail(), johnUpdate.getEmail());
+		assertEquals(person.getCity(), johnUpdate.getCity());
+	}
 }

@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.safety.safetynet.SafetynetApplication;
+import com.safety.safetynet.model.Firestation;
 import com.safety.safetynet.repository.FirestationRepository;
 
 @SpringBootTest(classes = SafetynetApplication.class)
@@ -41,4 +42,19 @@ class FirestationRepositoryTest {
 
 	}
 
+	@Test
+	void updateFirestationTest() {
+		Firestation firestation = new Firestation();
+		String addressBase = "Addresse base";
+		String stationBase = "Station base";
+		firestation.setAddress(addressBase);
+		firestation.setStation(stationBase);
+		Firestation firestationUpdate = new Firestation();
+
+		firestationUpdate.update(firestation);
+		firestationRepository.updateFirestation(firestation);
+
+		assertEquals(firestation.getAddress(), firestationUpdate.getAddress());
+		assertEquals(firestation.getStation(), firestationUpdate.getStation());
+	}
 }
