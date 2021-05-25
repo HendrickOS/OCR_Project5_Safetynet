@@ -49,26 +49,6 @@ public class PersonControllerTest {
 		}
 	}
 
-//	@Test
-//	public void addPersonTest() throws Exception {
-//		List<Person> persons = new ArrayList<Person>();
-//		Person person = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512",
-//				"jaboyd@email.com");
-//		persons.add(person);
-//		String responseContent = "[{ \"firstName\":\"John\", \"lastName\":\"Boyd\", \"address\":\"1509 Culver St\", \"city\":\"Culver\", \"zip\":\"97451\", \"phone\":\"841-874-6512\", \"email\":\"jaboyd@email.com\" }]";
-//		Mockito.when(personService.savePerson(person)).thenReturn(true);
-//		String contenu = "{ \"firstName\":\"John\", \"lastName\":\"Boyd\", \"address\":\"1509 Culver St\", \"city\":\"Culver\", \"zip\":\"97451\", \"phone\":\"841-874-6512\", \"email\":\"jaboyd@email.com\" }";
-//		String json = "{\n" + "\"fistName\": \"John\", \n" + "\"lastName\": \"Boyd\", \n"
-//				+ "\"address\": \"1509 Culver St\", \n" + "\"city\": \"Culver\", \n" + "\"zip\": \"97451\", \n"
-//				+ "\"phone\": \"841-874-6512\", \n" + "\"email\": \"jaboyd@email.com\", \n" + "}";
-//		try {
-//			mvc.perform(post("/person/").contentType(MediaType.APPLICATION_JSON).content(responseContent)
-//					.characterEncoding("utf-8")).andExpect(status().isOk()).andReturn().getResponse().getStatus();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
-
 	public static <T> Object convertJSONStringToObject(String json, Class<T> objectClass) throws IOException {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);

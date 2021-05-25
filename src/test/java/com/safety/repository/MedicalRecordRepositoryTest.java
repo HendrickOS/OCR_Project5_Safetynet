@@ -93,10 +93,8 @@ class MedicalRecordRepositoryTest {
 		allergies.add("nillacilan");
 		MedicalRecord medicalRecord = new MedicalRecord("John", "Boyd", "03/06/1984", medications, allergies);
 
-//		result = medicalRecordRepository.updateMedicalRecord(medicalRecord);
 		result.update(medicalRecord);
 		medicalRecordRepository.updateMedicalRecord(medicalRecord);
-//		result.update(medicalRecordRepository.updateMedicalRecord(medicalRecord);
 
 		assertEquals(medicalRecord.getAllergies(), result.getAllergies());
 		assertEquals(medicalRecord.getMedications(), result.getMedications());
@@ -147,8 +145,5 @@ class MedicalRecordRepositoryTest {
 
 		medicalRecords.remove(jacobMR);
 		medicalRecordRepository.deleteMedicalRecord(jacobMR);
-
-//		assertEquals(result, medicalRecords);
 	}
-
 }
