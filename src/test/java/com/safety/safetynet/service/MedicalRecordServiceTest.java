@@ -1,7 +1,5 @@
 package com.safety.safetynet.service;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,20 +29,10 @@ class MedicalRecordServiceTest {
 	void getMedicationsAndAllergiesFromPersonTest() {
 		Person person = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512",
 				"jaboyd@email.com");
-		List<String> medications = new ArrayList<String>();
-		medications.add("aznol:350mg");
-		medications.add("hydrapermazol:100mg");
-		List<String> allergies = new ArrayList<String>();
-		allergies.add("nillacilan");
-		MedicalRecord medicalRecord = new MedicalRecord("John", "Boyd", "03/06/1984", medications, allergies);
-		MedicalRecord result = new MedicalRecord();
 
-		Mockito.when(medicalRecordRepository.getMedicationsAndAllergiesFromPerson(person)).thenReturn(medicalRecord);
-		result = medicalRecordService.getMedicationsAndAllergiesFromPerson(person);
+		medicalRecordService.getMedicationsAndAllergiesFromPerson(person);
 
-		assertEquals(medicalRecord.getAllergies(), result.getAllergies());
-		assertEquals(medicalRecord.getMedications(), result.getMedications());
-		assertEquals(medicalRecord.getFirstName(), result.getFirstName());
+		Mockito.verify(medicalRecordRepository).getMedicationsAndAllergiesFromPerson(person);
 	}
 
 	@Test
@@ -53,41 +41,85 @@ class MedicalRecordServiceTest {
 		Person john = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512",
 				"jaboyd@email.com");
 		persons.add(john);
-		List<String> medications = new ArrayList<String>();
-		medications.add("aznol:350mg");
-		medications.add("hydrapermazol:100mg");
-		List<String> allergies = new ArrayList<String>();
-		allergies.add("nillacilan");
-		MedicalRecord medicalRecord = new MedicalRecord("John", "Boyd", "03/06/1984", medications, allergies);
-		List<MedicalRecord> medicalRecords = new ArrayList<MedicalRecord>();
-		medicalRecords.add(medicalRecord);
-		List<MedicalRecord> result = new ArrayList<MedicalRecord>();
 
-		Mockito.when(medicalRecordRepository.getMedicationsAndAllergiesFromPersons(persons)).thenReturn(medicalRecords);
-		result = medicalRecordService.getMedicationsAndAllergiesFromPersons(persons);
+		medicalRecordService.getMedicationsAndAllergiesFromPersons(persons);
 
-		assertEquals(medicalRecords.size(), result.size());
-		assertEquals(medicalRecords.get(0).getAllergies(), result.get(0).getAllergies());
+		Mockito.verify(medicalRecordRepository).getMedicationsAndAllergiesFromPersons(persons);
 	}
 
 	@Test
 	void getOnlyMedicationsAndAllergiesFromPersonTest() {
 		String firstName = "John";
 		String lastName = "Boyd";
+
+		medicalRecordService.getOnlyMedicationsAndAllergiesFromPerson(firstName, lastName);
+
+		Mockito.verify(medicalRecordRepository).getOnlyMedicationsAndAllergiesFromPerson(firstName, lastName);
+	}
+
+	@Test
+	void getPersonAgeTest() {
+		Person person = new Person("fistNameUpdate", "lastNameUpdate", "addresseUpdate", "cityUpdate", "zipUpdate",
+				"phoneUpdate", "jaboyd@emailUpdate");
+
+		medicalRecordService.getPersonAge(person);
+
+		Mockito.verify(medicalRecordRepository).getPersonAge(person);
+	}
+
+	@Test
+	void listTest() {
+		medicalRecordService.list();
+
+		Mockito.verify(medicalRecordRepository).list();
+	}
+
+	@Test
+	void updateMedicalRecordTest() {
 		List<String> medications = new ArrayList<String>();
 		medications.add("aznol:350mg");
 		medications.add("hydrapermazol:100mg");
 		List<String> allergies = new ArrayList<String>();
 		allergies.add("nillacilan");
-		MedicalRecord medicalRecord = new MedicalRecord("John", "Boyd", "03/06/1984", medications, allergies);
-		MedicalRecord result = new MedicalRecord();
+		MedicalRecord medicalRecordUpdate = new MedicalRecord("fistNameUpdate", "lastNameUpdate", "birthdate",
+				medications, allergies);
 
-		Mockito.when(medicalRecordRepository.getOnlyMedicationsAndAllergiesFromPerson(firstName, lastName))
-				.thenReturn(medicalRecord);
-		result = medicalRecordService.getOnlyMedicationsAndAllergiesFromPerson(firstName, lastName);
+		medicalRecordService.updateMedicalRecord(medicalRecordUpdate);
 
-		assertEquals(medicalRecord.getAllergies(), result.getAllergies());
-		assertEquals(medicalRecord.getMedications(), result.getMedications());
+		Mockito.verify(medicalRecordRepository).updateMedicalRecord(medicalRecordUpdate);
+
+	}
+
+	@Test
+	void addMedicalRecordTest() {
+		List<String> medications = new ArrayList<String>();
+		medications.add("aznol:350mg");
+		medications.add("hydrapermazol:100mg");
+		List<String> allergies = new ArrayList<String>();
+		allergies.add("nillacilan");
+		MedicalRecord medicalRecordUpdate = new MedicalRecord("fistNameUpdate", "lastNameUpdate", "birthdate",
+				medications, allergies);
+
+		medicalRecordService.saveMedicalRecord(medicalRecordUpdate);
+
+		Mockito.verify(medicalRecordRepository).addMedicalRecord(medicalRecordUpdate);
+
+	}
+
+	@Test
+	void deleteMedicalRecordTest() {
+		List<String> medications = new ArrayList<String>();
+		medications.add("aznol:350mg");
+		medications.add("hydrapermazol:100mg");
+		List<String> allergies = new ArrayList<String>();
+		allergies.add("nillacilan");
+		MedicalRecord medicalRecordUpdate = new MedicalRecord("fistNameUpdate", "lastNameUpdate", "birthdate",
+				medications, allergies);
+
+		medicalRecordService.deleteMedicalRecord(medicalRecordUpdate);
+
+		Mockito.verify(medicalRecordRepository).deleteMedicalRecord(medicalRecordUpdate);
+
 	}
 
 }

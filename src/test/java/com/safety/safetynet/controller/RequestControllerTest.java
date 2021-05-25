@@ -49,27 +49,11 @@ class RequestControllerTest {
 		String address = "1509 Culver St";
 		Person john = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512",
 				"jaboyd@email.com");
-//		Person jacob = new Person("Jacob", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6513",
-//				"drk@email.com");
-//		Person tenley = new Person("Tenley", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512",
-//				"tenz@email.com");
-//		Person roger = new Person("Roger", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512",
-//				"jaboyd@email.com");
-//		Person felicia = new Person("Felicia", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6544",
-//				"jaboyd@email.com");
 		List<Person> persons = new ArrayList<Person>();
 		persons.add(john);
-//		persons.add(jacob);
-//		persons.add(tenley);
-//		persons.add(roger);
-//		persons.add(felicia);
 		List<Person> childs = new ArrayList<Person>();
-//		childs.add(tenley);
-//		childs.add(roger);
 		List<Person> householdMembers = new ArrayList<Person>();
 		householdMembers.add(john);
-//		householdMembers.add(jacob);
-//		householdMembers.add(felicia);
 
 		childAlert.setChilds(childs);
 		childAlert.setHouseholdMembers(householdMembers);
@@ -91,20 +75,8 @@ class RequestControllerTest {
 		String firestation = "1";
 		Person peter = new Person("Peter", "Duncan", "644 Gershwin Cir", "Culver", "97451", "841-874-6512",
 				"jaboyd@email.com");
-//		Person reginold = new Person("Reginold", "Walker", "908 73rd St", "Culver", "97451", "841-874-8547",
-//				"reg@email.com");
-//		Person jamie = new Person("Jamie", "Peters", "908 73rd St", "Culver", "97451", "841-874-7462",
-//				"jpeter@email.com");
-//		Person brian = new Person("Brian", "Stelzer", "947 E. Rose Dr", "Culver", "97451", "841-874-7784",
-//				"bstel@email.com");
-//		Person kendrik = new Person("Kendrik", "Stelzer", "947 E. Rose Dr", "Culver", "97451", "841-874-7784",
-//				"bstel@email.com");
 		List<Person> persons = new ArrayList<Person>();
 		persons.add(peter);
-//		persons.add(reginold);
-//		persons.add(jamie);
-//		persons.add(brian);
-//		persons.add(kendrik);
 		Set<String> responseContent = new HashSet<String>();
 		responseContent.add("841-874-7784");
 		responseContent.add("841-874-7462");
@@ -153,20 +125,10 @@ class RequestControllerTest {
 		stations.add(Integer.valueOf(station));
 		Person tony = new Person("Tony", "Cooper", "112 Steppes Pl", "Culver", "97451", "841-874-6874",
 				"tcoop@ymail.com");
-//		Person ron = new Person("Ron", "Peters", "112 Steppes Pl", "Culver", "97451", "841-874-8888",
-//				"jpeter@email.com");
-//		Person allison = new Person("Allison", "Boyd", "112 Steppes Pl", "Culver", "97451", "841-874-9888",
-//				"aly@imail.com");
-//		Person lily = new Person("Lily", "Cooper", "489 Manchester St", "Culver", "97451", "841-874-9845",
-//				"lily@email.com");
 		List<Person> persons = new ArrayList<Person>();
 		persons.add(tony);
-//		persons.add(ron);
-//		persons.add(allison);
-//		persons.add(lily);
 		List<String> addresses = new ArrayList<String>();
 		addresses.add("112 Steppes Pl");
-//		addresses.add("489 Manchester St");
 		MedicalRecord medicalRecord = new MedicalRecord();
 
 		Mockito.when(firestationService.getFirestationsAddresses(station)).thenReturn(addresses);
@@ -222,20 +184,8 @@ class RequestControllerTest {
 		String city = "Culver";
 		Person peter = new Person("Peter", "Duncan", "644 Gershwin Cir", "Culver", "97451", "841-874-6512",
 				"jaboyd@email.com");
-//		Person reginold = new Person("Reginold", "Walker", "908 73rd St", "Culver", "97451", "841-874-8547",
-//				"reg@email.com");
-//		Person jamie = new Person("Jamie", "Peters", "908 73rd St", "Culver", "97451", "841-874-7462",
-//				"jpeter@email.com");
-//		Person brian = new Person("Brian", "Stelzer", "947 E. Rose Dr", "Culver", "97451", "841-874-7784",
-//				"bstel@email.com");
-//		Person kendrik = new Person("Kendrik", "Stelzer", "947 E. Rose Dr", "Culver", "97451", "841-874-7784",
-//				"bstel@email.com");
 		List<Person> persons = new ArrayList<Person>();
 		persons.add(peter);
-//		persons.add(reginold);
-//		persons.add(jamie);
-//		persons.add(brian);
-//		persons.add(kendrik);
 		Set<String> emails = new HashSet<String>();
 
 		try {

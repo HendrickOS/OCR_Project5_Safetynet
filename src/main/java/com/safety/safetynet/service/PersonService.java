@@ -39,20 +39,20 @@ public class PersonService {
 		}
 	}
 
-	public List<Person> getPersonsFromAddresses(List<String> adresses) {
-		return personRepository.getPersonsFromAddresses(adresses);
+	public List<Person> getPersonsFromAddresses(List<String> addresses) {
+		return personRepository.getPersonsFromAddresses(addresses);
 	}
 
-	public List<Person> getPersonsFromAddressFirePerson(String adress) {
-		return personRepository.getPersonsFromAddressFirePerson(adress);
+	public List<Person> getPersonsFromAddressFirePerson(String address) {
+		return personRepository.getPersonsFromAddressFirePerson(address);
 	}
 
-	public List<Person> getPersonsFromAddressFirestationPerson(String adress) {
-		return personRepository.getPersonsFromAddressFirestationPerson(adress);
+	public List<Person> getPersonsFromAddressFirestationPerson(String address) {
+		return personRepository.getPersonsFromAddressFirestationPerson(address);
 	}
 
-	public List<Person> getPersonsFromAddressChildAlert(String adress) {
-		return personRepository.getPersonsFromAddressChildAlert(adress);
+	public List<Person> getPersonsFromAddressChildAlert(String address) {
+		return personRepository.getPersonsFromAddressChildAlert(address);
 	}
 
 	public Person getPersonFromFirstNameAndLastName(String firstName, String lastName) {

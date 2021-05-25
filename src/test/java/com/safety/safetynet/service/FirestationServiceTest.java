@@ -1,10 +1,5 @@
 package com.safety.safetynet.service;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
@@ -14,6 +9,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.safety.safetynet.SafetynetApplication;
+import com.safety.safetynet.model.Firestation;
 import com.safety.safetynet.repository.FirestationRepository;
 
 @SpringBootTest(classes = SafetynetApplication.class)
@@ -24,25 +20,69 @@ class FirestationServiceTest {
 	FirestationService firestationService;
 	@MockBean
 	FirestationRepository firestationRepository;
+	@MockBean
+	PersonService personService;
 
 	@Test
 	void getFirestationsAddressesTest() {
-		int station = 1;
-		List<String> result = new ArrayList<String>();
-		List<String> addresses = new ArrayList<String>();
-		String address1 = "644 Gershwin Cir";
-		String address2 = "908 73rd St";
-		String address3 = "947 E. Rose Dr";
-		addresses.add(address1);
-		addresses.add(address2);
-		addresses.add(address3);
+		String station = "station";
+		String address = "address";
+		Firestation firestation = new Firestation("address", "station");
 
-		Mockito.when(firestationRepository.getFirestationsAddresses(String.valueOf(station))).thenReturn(addresses);
-		result = firestationService.getFirestationsAddresses(String.valueOf(station));
+		firestationService.getFirestationsAddresses(station);
 
-		assertEquals(addresses.size(), result.size());
-		assertEquals(addresses.get(0).length(), result.get(0).length());
-		addresses.get(1).equals(result.get(1));
+		Mockito.verify(firestationRepository).getFirestationsAddresses(station);
 	}
 
+//	@Test
+//	void getPersonsForFirestationTest() {
+//		String station = "station";
+//		String address = "address";
+//		Firestation firestation = new Firestation("address", "station");
+//		List<Person> persons = new ArrayList<Person>();
+//		Person john = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512",
+//				"jaboyd@email.com");
+//		persons.add(john);
+//		List<String> addresses = new ArrayList<String>();
+//		addresses.add(address);
+//		Mockito.when(personService.getPersonsFromAddresses(addresses)).thenReturn(persons);
+//
+//		firestationService.getFirestationsAddresses(station);
+//
+//		Mockito.verify(personService).getPersonsFromAddresses(firestationService.getFirestationsAddresses(station));
+//	}
+
+	@Test
+	void addFirestationTest() {
+		Firestation firestationUpdate = new Firestation("address", "station");
+
+		firestationService.saveFirestation(firestationUpdate);
+
+		Mockito.verify(firestationRepository).addFirestation(firestationUpdate);
+	}
+
+	@Test
+	void updateFirestationTest() {
+		Firestation firestationUpdate = new Firestation("address", "station");
+
+		firestationService.updateFirestation(firestationUpdate);
+
+		Mockito.verify(firestationRepository).updateFirestation(firestationUpdate);
+	}
+
+	@Test
+	void deleteFirestationTest() {
+		Firestation firestationUpdate = new Firestation("address", "station");
+
+		firestationService.deleteFirestation(firestationUpdate);
+
+		Mockito.verify(firestationRepository).deleteFirestation(firestationUpdate);
+	}
+
+	@Test
+	void listTest() {
+		firestationService.list();
+
+		Mockito.verify(firestationRepository).list();
+	}
 }
