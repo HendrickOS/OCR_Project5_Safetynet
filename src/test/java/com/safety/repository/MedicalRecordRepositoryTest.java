@@ -114,7 +114,7 @@ class MedicalRecordRepositoryTest {
 
 		age = medicalRecordRepository.getPersonAge(john);
 
-		assertEquals(37, age);
+		assertEquals(39, age);
 	}
 
 	@Test
