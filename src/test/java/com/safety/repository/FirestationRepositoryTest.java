@@ -29,8 +29,8 @@ class FirestationRepositoryTest {
 	@Test
 	void getFirestationsAddressesTest() {
 		int stationNumber = 1;
-		List<String> result = new ArrayList<String>();
-		List<String> addresses = new ArrayList<String>();
+		List<String> result = new ArrayList<>();
+		List<String> addresses = new ArrayList<>();
 		String address1 = "644 Gershwin Cir";
 		String address2 = "908 73rd St";
 		String address3 = "947 E. Rose Dr";

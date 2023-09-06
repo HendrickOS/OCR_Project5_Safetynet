@@ -17,8 +17,8 @@ class PersonInfoTest {
 		PersonInfo personInfo = new PersonInfo();
 		Person person = new Person("myFirstName", "myLastName", "myAddress", "myCity", "myZip", "myPhoneNumber",
 				"myEmailAddress");
-		List<String> myMedications = new ArrayList<String>();
-		List<String> myAllergies = new ArrayList<String>();
+		List<String> myMedications = new ArrayList<>();
+		List<String> myAllergies = new ArrayList<>();
 		myMedications.add("Medication1:Measure1");
 		myMedications.add("Medication2:Measure2");
 		myAllergies.add("Allergie1");

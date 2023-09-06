@@ -36,7 +36,7 @@ class FirestationControllerTest {
 	@Test
 	void getPersonforFirestationTest() {
 		int stationNumber = 1;
-		List<Person> persons = new ArrayList<Person>();
+		List<Person> persons = new ArrayList<>();
 		Person john = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512",
 				"jaboyd@email.com");
 		persons.add(john);

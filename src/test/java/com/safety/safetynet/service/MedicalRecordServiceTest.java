@@ -37,7 +37,7 @@ class MedicalRecordServiceTest {
 
 	@Test
 	void getMedicationsAndAllergiesFromPersonsTest() {
-		List<Person> persons = new ArrayList<Person>();
+		List<Person> persons = new ArrayList<>();
 		Person john = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512",
 				"jaboyd@email.com");
 		persons.add(john);
@@ -76,10 +76,10 @@ class MedicalRecordServiceTest {
 
 	@Test
 	void updateMedicalRecordTest() {
-		List<String> medications = new ArrayList<String>();
+		List<String> medications = new ArrayList<>();
 		medications.add("aznol:350mg");
 		medications.add("hydrapermazol:100mg");
-		List<String> allergies = new ArrayList<String>();
+		List<String> allergies = new ArrayList<>();
 		allergies.add("nillacilan");
 		MedicalRecord medicalRecordUpdate = new MedicalRecord("fistNameUpdate", "lastNameUpdate", "birthdate",
 				medications, allergies);
@@ -92,10 +92,10 @@ class MedicalRecordServiceTest {
 
 	@Test
 	void addMedicalRecordTest() {
-		List<String> medications = new ArrayList<String>();
+		List<String> medications = new ArrayList<>();
 		medications.add("aznol:350mg");
 		medications.add("hydrapermazol:100mg");
-		List<String> allergies = new ArrayList<String>();
+		List<String> allergies = new ArrayList<>();
 		allergies.add("nillacilan");
 		MedicalRecord medicalRecordUpdate = new MedicalRecord("fistNameUpdate", "lastNameUpdate", "birthdate",
 				medications, allergies);
@@ -108,10 +108,10 @@ class MedicalRecordServiceTest {
 
 	@Test
 	void deleteMedicalRecordTest() {
-		List<String> medications = new ArrayList<String>();
+		List<String> medications = new ArrayList<>();
 		medications.add("aznol:350mg");
 		medications.add("hydrapermazol:100mg");
-		List<String> allergies = new ArrayList<String>();
+		List<String> allergies = new ArrayList<>();
 		allergies.add("nillacilan");
 		MedicalRecord medicalRecordUpdate = new MedicalRecord("fistNameUpdate", "lastNameUpdate", "birthdate",
 				medications, allergies);

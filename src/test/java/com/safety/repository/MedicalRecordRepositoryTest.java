@@ -25,10 +25,10 @@ class MedicalRecordRepositoryTest {
 
 	@Test
 	void getMedicationsAndAllergiesFromPersonTest() {
-		List<String> medications = new ArrayList<String>();
+		List<String> medications = new ArrayList<>();
 		medications.add("aznol:350mg");
 		medications.add("hydrapermazol:100mg");
-		List<String> allergies = new ArrayList<String>();
+		List<String> allergies = new ArrayList<>();
 		allergies.add("nillacilan");
 		MedicalRecord medicalRecord = new MedicalRecord("John", "Boyd", "03/06/1984", medications, allergies);
 		Person john = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512",
@@ -46,10 +46,10 @@ class MedicalRecordRepositoryTest {
 	void getOnlyMedicationsAndAllergiesFromPersonTest() {
 		String firstName = "John";
 		String lastName = "Boyd";
-		List<String> medications = new ArrayList<String>();
+		List<String> medications = new ArrayList<>();
 		medications.add("aznol:350mg");
 		medications.add("hydrapermazol:100mg");
-		List<String> allergies = new ArrayList<String>();
+		List<String> allergies = new ArrayList<>();
 		allergies.add("nillacilan");
 		MedicalRecord medicalRecord = new MedicalRecord("John", "Boyd", "03/06/1984", medications, allergies);
 		Person john = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512",
@@ -64,14 +64,14 @@ class MedicalRecordRepositoryTest {
 
 	@Test
 	void getMedicationsAndAllergiesFromPersons() {
-		List<MedicalRecord> result = new ArrayList<MedicalRecord>();
-		List<String> medications = new ArrayList<String>();
+		List<MedicalRecord> result = new ArrayList<>();
+		List<String> medications = new ArrayList<>();
 		medications.add("aznol:350mg");
 		medications.add("hydrapermazol:100mg");
-		List<String> allergies = new ArrayList<String>();
+		List<String> allergies = new ArrayList<>();
 		allergies.add("nillacilan");
 		MedicalRecord medicalRecord = new MedicalRecord("John", "Boyd", "03/06/1984", medications, allergies);
-		List<Person> persons = new ArrayList<Person>();
+		List<Person> persons = new ArrayList<>();
 		Person john = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512",
 				"jaboyd@email.com");
 		persons.add(john);
@@ -86,10 +86,10 @@ class MedicalRecordRepositoryTest {
 	@Test
 	void updateMedicalRecordTest() {
 		MedicalRecord result = new MedicalRecord();
-		List<String> medications = new ArrayList<String>();
+		List<String> medications = new ArrayList<>();
 		medications.add("aznol:350mg");
 		medications.add("hydrapermazol:100mg");
-		List<String> allergies = new ArrayList<String>();
+		List<String> allergies = new ArrayList<>();
 		allergies.add("nillacilan");
 		MedicalRecord medicalRecord = new MedicalRecord("John", "Boyd", "03/06/1984", medications, allergies);
 
@@ -105,10 +105,10 @@ class MedicalRecordRepositoryTest {
 		int age;
 		Person john = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512",
 				"jaboyd@email.com");
-		List<String> medications = new ArrayList<String>();
+		List<String> medications = new ArrayList<>();
 		medications.add("aznol:350mg");
 		medications.add("hydrapermazol:100mg");
-		List<String> allergies = new ArrayList<String>();
+		List<String> allergies = new ArrayList<>();
 		allergies.add("nillacilan");
 		MedicalRecord mr = new MedicalRecord("John", "Boyd", "03/06/1984", medications, allergies);
 
@@ -119,27 +119,27 @@ class MedicalRecordRepositoryTest {
 
 	@Test
 	void deleteMedicalRecordTest() {
-		List<String> medicationsJohn = new ArrayList<String>();
+		List<String> medicationsJohn = new ArrayList<>();
 		medicationsJohn.add("aznol:350mg");
 		medicationsJohn.add("hydrapermazol:100mg");
-		List<String> allergiesJohn = new ArrayList<String>();
+		List<String> allergiesJohn = new ArrayList<>();
 		allergiesJohn.add("nillacilan");
 		MedicalRecord johnMR = new MedicalRecord("John", "Boyd", "03/06/1984", medicationsJohn, allergiesJohn);
-		List<String> medicationsJacob = new ArrayList<String>();
+		List<String> medicationsJacob = new ArrayList<>();
 		medicationsJacob.add("pharmacol:5000mg");
 		medicationsJacob.add("terazine:10mg");
 		medicationsJacob.add("noznazol:250mg");
-		List<String> allergiesJacob = new ArrayList<String>();
+		List<String> allergiesJacob = new ArrayList<>();
 		MedicalRecord jacobMR = new MedicalRecord("Jacob", "Boyd", "03/06/1989", medicationsJacob, allergiesJacob);
-		List<String> medicationsTenley = new ArrayList<String>();
-		List<String> allergiesTenley = new ArrayList<String>();
+		List<String> medicationsTenley = new ArrayList<>();
+		List<String> allergiesTenley = new ArrayList<>();
 		allergiesJohn.add("peanut");
 		MedicalRecord tenleyMR = new MedicalRecord("Tenley", "Boyd", "02//18/2012", medicationsTenley, allergiesTenley);
-		List<MedicalRecord> medicalRecords = new ArrayList<MedicalRecord>();
+		List<MedicalRecord> medicalRecords = new ArrayList<>();
 		medicalRecords.add(johnMR);
 		medicalRecords.add(jacobMR);
 		medicalRecords.add(tenleyMR);
-		List<MedicalRecord> result = new ArrayList<MedicalRecord>();
+		List<MedicalRecord> result = new ArrayList<>();
 		result.add(jacobMR);
 		result.add(tenleyMR);
 

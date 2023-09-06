@@ -71,7 +71,12 @@
 		<dependency>
 			<groupId>org.jacoco</groupId>
 			<artifactId>jacoco-maven-plugin</artifactId>
+<<<<<<< HEAD
+			<!-- <version>0.8.5</version> -->
+			<version>0.8.6</version>
+=======
 			<version>0.8.5</version>
+>>>>>>> 97af8e8da657eebeed2ff491e77621c6c20d229b
 		</dependency>
 
 		<!-- Mock Static -->
@@ -94,6 +99,8 @@
 			<scope>test</scope>
 		</dependency>
 
+<<<<<<< HEAD
+=======
 		<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-site-plugin -->
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
@@ -108,6 +115,7 @@
 			<version>3.1.2</version>
 		</dependency>
 
+<<<<<<< HEAD
 		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -120,6 +128,9 @@
 		</dependency>
 
 
+=======
+>>>>>>> 97af8e8da657eebeed2ff491e77621c6c20d229b
+>>>>>>> e177059a47a3e63546ed672c7b6f54a49c67a88c
 	</dependencies>
 
 	<build>
@@ -130,19 +141,25 @@
 			</plugin>
 
 			<!-- JaCoCo -->
+			<!-- <plugin> <groupId>org.jacoco</groupId> <artifactId>jacoco-maven-plugin</artifactId> 
+				<version>0.8.5</version> <executions> <execution> <goals> <goal>prepare-agent</goal> 
+				</goals> </execution> <execution> <id>report</id> <phase>test</phase> <goals> 
+				<goal>report</goal> </goals> </execution> </executions> </plugin> -->
+
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.5</version>
+				<version>0.8.6</version>
 				<executions>
 					<execution>
+						<id>jacoco-initialize</id>
 						<goals>
 							<goal>prepare-agent</goal>
 						</goals>
 					</execution>
 					<execution>
-						<id>report</id>
-						<phase>test</phase>
+						<id>jacoco-site</id>
+						<phase>package</phase>
 						<goals>
 							<goal>report</goal>
 						</goals>

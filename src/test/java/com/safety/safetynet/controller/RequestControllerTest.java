@@ -49,10 +49,10 @@ class RequestControllerTest {
 		String address = "1509 Culver St";
 		Person john = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512",
 				"jaboyd@email.com");
-		List<Person> persons = new ArrayList<Person>();
+		List<Person> persons = new ArrayList<>();
 		persons.add(john);
-		List<Person> childs = new ArrayList<Person>();
-		List<Person> householdMembers = new ArrayList<Person>();
+		List<Person> childs = new ArrayList<>();
+		List<Person> householdMembers = new ArrayList<>();
 		householdMembers.add(john);
 
 		childAlert.setChilds(childs);
@@ -75,9 +75,9 @@ class RequestControllerTest {
 		String firestation = "1";
 		Person peter = new Person("Peter", "Duncan", "644 Gershwin Cir", "Culver", "97451", "841-874-6512",
 				"jaboyd@email.com");
-		List<Person> persons = new ArrayList<Person>();
+		List<Person> persons = new ArrayList<>();
 		persons.add(peter);
-		Set<String> responseContent = new HashSet<String>();
+		Set<String> responseContent = new HashSet<>();
 		responseContent.add("841-874-7784");
 		responseContent.add("841-874-7462");
 		responseContent.add("841-874-6512");
@@ -100,7 +100,7 @@ class RequestControllerTest {
 		String address = "834 Binoc Ave";
 		Person tessa = new Person("Tessa", "Carman", "834 Binoc Ave", "Culver", "97451", "841-874-6512",
 				"tenz@email.com");
-		List<Person> persons = new ArrayList<Person>();
+		List<Person> persons = new ArrayList<>();
 		persons.add(tessa);
 		MedicalRecord medicalRecord = new MedicalRecord();
 
@@ -121,18 +121,18 @@ class RequestControllerTest {
 	@Test
 	void floodStationsRequestTest() {
 		String station = "4";
-		List<Integer> stations = new ArrayList<Integer>();
+		List<Integer> stations = new ArrayList<>();
 		stations.add(Integer.valueOf(station));
 		Person tony = new Person("Tony", "Cooper", "112 Steppes Pl", "Culver", "97451", "841-874-6874",
 				"tcoop@ymail.com");
-		List<Person> persons = new ArrayList<Person>();
+		List<Person> persons = new ArrayList<>();
 		persons.add(tony);
-		List<String> addresses = new ArrayList<String>();
+		List<String> addresses = new ArrayList<>();
 		addresses.add("112 Steppes Pl");
 		MedicalRecord medicalRecord = new MedicalRecord();
 
 		Mockito.when(firestationService.getFirestationsAddresses(station)).thenReturn(addresses);
-		Mockito.when(personService.getPersonsFromAddresses(new ArrayList<String>(addresses))).thenReturn(persons);
+		Mockito.when(personService.getPersonsFromAddresses(new ArrayList<>(addresses))).thenReturn(persons);
 		Mockito.when(medicalRecordService.getMedicationsAndAllergiesFromPerson(persons.get(0)))
 				.thenReturn(medicalRecord);
 		Mockito.when(medicalRecordService.getPersonAge(persons.get(0))).thenReturn(25);
@@ -152,10 +152,10 @@ class RequestControllerTest {
 		PersonInfo personInfo = new PersonInfo();
 		Person person = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512",
 				"jaboyd@email.com");
-		List<String> medications = new ArrayList<String>();
+		List<String> medications = new ArrayList<>();
 		medications.add("aznol:350mg");
 		medications.add("hydrapermazol:100mg");
-		List<String> allergies = new ArrayList<String>();
+		List<String> allergies = new ArrayList<>();
 		allergies.add("nillacilan");
 		MedicalRecord medicalRecord = new MedicalRecord("John", "Boyd", "03/06/1984", medications, allergies);
 
@@ -184,9 +184,9 @@ class RequestControllerTest {
 		String city = "Culver";
 		Person peter = new Person("Peter", "Duncan", "644 Gershwin Cir", "Culver", "97451", "841-874-6512",
 				"jaboyd@email.com");
-		List<Person> persons = new ArrayList<Person>();
+		List<Person> persons = new ArrayList<>();
 		persons.add(peter);
-		Set<String> emails = new HashSet<String>();
+		Set<String> emails = new HashSet<>();
 
 		try {
 			mvc.perform(get("/communityEmail?city=Culver")).andDo(MockMvcResultHandlers.print())

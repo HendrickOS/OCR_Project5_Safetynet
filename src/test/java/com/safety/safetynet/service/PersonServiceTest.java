@@ -26,7 +26,7 @@ class PersonServiceTest {
 
 	@Test
 	void getPersonsFromAddressesTest() {
-		List<String> addresses = new ArrayList<String>();
+		List<String> addresses = new ArrayList<>();
 		String address1 = "1509 Culver St";
 		addresses.add(address1);
 
