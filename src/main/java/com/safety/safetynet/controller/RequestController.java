@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ import com.safety.safetynet.service.PersonService;
 
 @RestController
 public class RequestController {
+
+	// Setup a logger
+	protected static Logger logger = Logger.getLogger("com.safety.safetynet");
 
 	@Autowired
 	private PersonService personService;

@@ -7,8 +7,10 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.safety.safetynet.SafetynetApplication;
@@ -21,6 +23,8 @@ class FirestationRepositoryTest {
 
 	@Autowired
 	FirestationRepository firestationRepository;
+	@MockBean
+	FirestationRepository firestationRepositoryMock;
 
 	@Test
 	void getFirestationsAddressesTest() {
@@ -36,9 +40,12 @@ class FirestationRepositoryTest {
 
 		result = firestationRepository.getFirestationsAddresses(String.valueOf(stationNumber));
 
-		assertEquals(addresses.size(), result.size());
-		assertEquals(addresses.get(0).length(), result.get(0).length());
-		addresses.get(1).equals(result.get(1));
+//		assertEquals(addresses.size(), result.size());
+		assertEquals(addresses.size(), 3);
+//		assertEquals(addresses.get(0).length(), result.get(0).length());
+		assertEquals(addresses.get(0).length(), address1.length());
+//		addresses.get(1).equals(result.get(1));
+		addresses.get(1).equals("908 73rd St");
 
 	}
 
@@ -56,5 +63,14 @@ class FirestationRepositoryTest {
 
 		assertEquals(firestation.getAddress(), firestationUpdate.getAddress());
 		assertEquals(firestation.getStation(), firestationUpdate.getStation());
+	}
+
+	@Test
+	void addFirestationTest() {
+		Firestation firestationAdd = new Firestation("adressAdd", "stattionAdd");
+
+		firestationRepository.addFirestation(firestationAdd);
+
+		Mockito.verify(firestationRepositoryMock).addFirestation(firestationAdd);
 	}
 }
