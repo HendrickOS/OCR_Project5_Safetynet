@@ -35,7 +35,7 @@ public class PersonControllerTest {
 
 	@Test
 	public void getPersonTest() throws Exception {
-		List<Person> persons = new ArrayList<Person>();
+		List<Person> persons = new ArrayList<>();
 		persons.add(
 				new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512", "jaboyd@email.com"));
 		Mockito.when(personService.list()).thenReturn(persons);

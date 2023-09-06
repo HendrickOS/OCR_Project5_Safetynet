@@ -24,9 +24,9 @@ class PersonRepositoryTest {
 
 	@Test
 	void getPersonFromAddressesTest() {
-		List<String> addresses = new ArrayList<String>();
+		List<String> addresses = new ArrayList<>();
 		addresses.add("1509 Culver St");
-		List<Person> persons = new ArrayList<Person>();
+		List<Person> persons = new ArrayList<>();
 		Person john = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512",
 				"jaboyd@email.com");
 		Person jacob = new Person("Jacob", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6513",
@@ -42,11 +42,11 @@ class PersonRepositoryTest {
 		persons.add(tenley);
 		persons.add(roger);
 		persons.add(felicia);
-		List<Person> personsExpected = new ArrayList<Person>();
+		List<Person> personsExpected = new ArrayList<>();
 		for (Person p : persons) {
 			personsExpected.add(Person.doFirestationPerson(p));
 		}
-		List<Person> result = new ArrayList<Person>();
+		List<Person> result = new ArrayList<>();
 
 		result = personRepository.getPersonsFromAddresses(addresses);
 
@@ -58,9 +58,9 @@ class PersonRepositoryTest {
 
 	@Test
 	void getPersonsFromAddressFirePersonTest() {
-		List<Person> result = new ArrayList<Person>();
+		List<Person> result = new ArrayList<>();
 		String address = "1509 Culver St";
-		List<Person> persons = new ArrayList<Person>();
+		List<Person> persons = new ArrayList<>();
 		Person john = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512",
 				"jaboyd@email.com");
 		Person jacob = new Person("Jacob", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6513",
@@ -76,7 +76,7 @@ class PersonRepositoryTest {
 		persons.add(tenley);
 		persons.add(roger);
 		persons.add(felicia);
-		List<Person> personsExpected = new ArrayList<Person>();
+		List<Person> personsExpected = new ArrayList<>();
 		for (Person p : persons) {
 			personsExpected.add(Person.doFirePerson(p));
 		}
@@ -90,9 +90,9 @@ class PersonRepositoryTest {
 
 	@Test
 	void getPersonsFromAddressFirestationPersonTest() {
-		List<Person> result = new ArrayList<Person>();
+		List<Person> result = new ArrayList<>();
 		String address = "1509 Culver St";
-		List<Person> persons = new ArrayList<Person>();
+		List<Person> persons = new ArrayList<>();
 		Person john = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512",
 				"jaboyd@email.com");
 		Person jacob = new Person("Jacob", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6513",
@@ -108,7 +108,7 @@ class PersonRepositoryTest {
 		persons.add(tenley);
 		persons.add(roger);
 		persons.add(felicia);
-		List<Person> personsExpected = new ArrayList<Person>();
+		List<Person> personsExpected = new ArrayList<>();
 		for (Person p : persons) {
 			personsExpected.add(Person.doFirestationPerson(p));
 		}
@@ -122,9 +122,9 @@ class PersonRepositoryTest {
 
 	@Test
 	void getPersonsFromAddressChildAlertTest() {
-		List<Person> result = new ArrayList<Person>();
+		List<Person> result = new ArrayList<>();
 		String address = "1509 Culver St";
-		List<Person> persons = new ArrayList<Person>();
+		List<Person> persons = new ArrayList<>();
 		Person john = new Person("John", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6512",
 				"jaboyd@email.com");
 		Person jacob = new Person("Jacob", "Boyd", "1509 Culver St", "Culver", "97451", "841-874-6513",
@@ -140,7 +140,7 @@ class PersonRepositoryTest {
 		persons.add(tenley);
 		persons.add(roger);
 		persons.add(felicia);
-		List<Person> personsExpected = new ArrayList<Person>();
+		List<Person> personsExpected = new ArrayList<>();
 		for (Person p : persons) {
 			personsExpected.add(Person.doChildPerson(p));
 		}

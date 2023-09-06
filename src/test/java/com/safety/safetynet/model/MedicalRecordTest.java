@@ -11,26 +11,26 @@ class MedicalRecordTest {
 
 	@Test
 	void testMedicalRecord() {
-		List<String> myMedications = new ArrayList<String>();
-		List<String> myAllergies = new ArrayList<String>();
+		List<String> myMedications = new ArrayList<>();
+		List<String> myAllergies = new ArrayList<>();
 		myMedications.add("Medication1:Measure1");
 		myMedications.add("Medication2:Measure2");
 		myAllergies.add("Allergie1");
 		myAllergies.add("Allergie2");
-		List<String> anotherMedications = new ArrayList<String>();
-		List<String> anotherAllergies = new ArrayList<String>();
+		List<String> anotherMedications = new ArrayList<>();
+		List<String> anotherAllergies = new ArrayList<>();
 		anotherMedications.add("Medication3:Measure3");
 		anotherMedications.add("Medication4:Measure4");
 		anotherAllergies.add("Allergie3");
 		anotherAllergies.add("Allergie4");
-		List<String> myMedications3 = new ArrayList<String>();
-		List<String> myAllergies3 = new ArrayList<String>();
+		List<String> myMedications3 = new ArrayList<>();
+		List<String> myAllergies3 = new ArrayList<>();
 		myMedications3.add("Medication5:Measure5");
 		myMedications3.add("Medication6:Measure6");
 		myAllergies3.add("Allergie5");
 		myAllergies3.add("Allergie6");
-		List<String> myMedicationsUpdate = new ArrayList<String>();
-		List<String> myAllergiesUpdate = new ArrayList<String>();
+		List<String> myMedicationsUpdate = new ArrayList<>();
+		List<String> myAllergiesUpdate = new ArrayList<>();
 		myMedicationsUpdate.add("MedicationUpdate1:MeasureUpdate1");
 		myMedicationsUpdate.add("MedicationUpdate2:MeasureUpdate2");
 		myAllergiesUpdate.add("AllergieUpdate1");
